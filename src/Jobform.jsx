@@ -11,6 +11,18 @@ function Jobform() {
     applicationsource: "",
     notes: "",
   });
+  function resetdata() {
+    setformdata({
+      companyname: "",
+      dateofapplication: "",
+      jobtitle: "",
+      status: "",
+      jobtype: "",
+      joblocation: "",
+      applicationsource: "",
+      notes: "",
+    });
+  }
 
   function confirmdata() {}
   function handleinputchange(event) {
@@ -34,23 +46,29 @@ function Jobform() {
     //for example: name field of the element should be jobtitle if we want to change the jobtitle variable of that object and so on for all other variables.
   }
   return (
-    <>
-      <div className="flex  gap-2 flex-col items-center  bg-gray-400 h-screen">
-        <div className="flex gap-3">
-          <span>Company Name : </span>
+    <div className="flex justify-center bg-blue-100">
+      <div className=" rounded-[8px] flex  gap-2 flex-col pl-[100px] pt-[20px] bg-gray-300 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
+        <h1 className=" font-bold text-purple-800 bg-gray-200 max-w-fit text-4xl p-[10px] rounded-[5px] ml-[130px]">
+          Job Application Form
+        </h1>
+        <br></br>
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px] ">Company Name : </span>
           <input
-            className="border-2 border-black"
+            className=" w-[500px] h-[40px] text-[20px] bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm"
             type="text"
-            placeholder="Company name"
+            placeholder="Name of the company"
             onChange={handleinputchange}
             value={formdata.companyname}
             name="companyname"
           ></input>
         </div>
-        <div>
-          <span>Date of Application : </span>
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px]">
+            Date of Application :{" "}
+          </span>
           <input
-            className="border-2 border-black"
+            className=" bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm w-[500px] h-[40px] text-[20px] "
             type="text"
             placeholder="Date of application"
             onChange={handleinputchange}
@@ -58,10 +76,10 @@ function Jobform() {
             name="dateofapplication"
           ></input>
         </div>
-        <div>
-          <span>Job Title : </span>
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px]">Job Title : </span>
           <input
-            className="border-2 border-black"
+            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="text"
             placeholder="Job title"
             onChange={handleinputchange}
@@ -69,32 +87,49 @@ function Jobform() {
             name="jobtitle"
           ></input>
         </div>
-        <div>
-          <span>Job Status : </span>
-          <input
-            className="border-2 border-black"
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px]">Job Status : </span>
+          <select
+            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="text"
             placeholder="status"
             onChange={handleinputchange}
             value={formdata.status}
             name="status"
-          ></input>
+          >
+            <option value="">Select the job status</option>
+            <option value="applied">Applied</option>
+            <option value="under review">Under Review</option>
+            <option value="interview scheduled">Interview Scheduled</option>
+            <option value="interviewed">Interviewed</option>
+            <option value="offer received">Offer Received</option>
+            <option value="accepted offer">Accepted Offer</option>
+            <option value="rejected">Rejected</option>
+            <option value="withdrawn">Withdrawn</option>
+          </select>
         </div>
-        <div>
-          <span> Type of Job : </span>
-          <input
-            className="border-2 border-black"
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px]"> Type of Job : </span>
+          <select
+            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="text"
             placeholder="job type"
             onChange={handleinputchange}
             value={formdata.jobtype}
             name="jobtype"
-          ></input>
+          >
+            <option value="">Select job type</option>
+            <option value="remote">Remote</option>
+            <option value="onsite">Onsite</option>
+            <option value="hybrid">Hybrid</option>
+          </select>
         </div>
-        <div>
-          <span>Location of the Company : </span>
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px]">
+            Location of the Company :{" "}
+          </span>
           <input
-            className="border-2 border-black"
+            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="text"
             placeholder="Company location"
             onChange={handleinputchange}
@@ -102,10 +137,12 @@ function Jobform() {
             name="joblocation"
           ></input>
         </div>
-        <div>
-          <span>Source of Application : </span>
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px]">
+            Source of Application :{" "}
+          </span>
           <input
-            className="border-2 border-black"
+            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="text"
             placeholder="Application source"
             onChange={handleinputchange}
@@ -113,26 +150,28 @@ function Jobform() {
             name="applicationsource"
           ></input>
         </div>
-        <div>
-          <span>Your Resume : </span>
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px]">Your Resume : </span>
           <input
-            className="border-2 border-black"
+            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="file"
             placeholder="Drop Your Resume"
           ></input>
         </div>
-        <div>
-          <span>Your Cover Letter : </span>
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px]">
+            Your Cover Letter :{" "}
+          </span>
           <input
-            className="border-2 border-black"
+            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="file"
             placeholder=" Drop Your cover letter"
           ></input>
         </div>
-        <div>
-          <span>Note : </span>
+        <div className="flex gap-3 flex-col">
+          <span className="font-semibold  text-[25px]">Note : </span>
           <input
-            className="border-2 border-black"
+            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="text"
             placeholder="Leave your notes (Optional)"
             onChange={handleinputchange}
@@ -140,14 +179,23 @@ function Jobform() {
             name="notes"
           ></input>
         </div>
-        <button
-          onClick={confirmdata}
-          className="text-2xl text-blue-700 font-bold bg-white rounded-2xl p-[5px]"
-        >
-          Confirm
-        </button>
+        <div className="flex gap-10 ml-[500px]">
+          <button
+            onClick={resetdata}
+            className="text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-black hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
+          >
+            Reset
+          </button>
+
+          <button
+            onClick={confirmdata}
+            className="text-xl text-purple-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-black hover:translate-y-1 cursor-pointer hover:bg-blue-100 hover:text-green-800"
+          >
+            Confirm
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 export default Jobform;
