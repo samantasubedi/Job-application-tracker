@@ -22,11 +22,26 @@ function Jobform() {
       applicationsource: "",
       notes: "",
     });
+    setisreset(true);
+    setTimeout(() => {
+      setisreset(false);
+    }, 3000);
+  }
+  const [isreset, setisreset] = useState(false);
+  const [isconfirmed, setisconfirmed] = useState(false);
+  function confirmdata() {
+    if (formvalidation()) {
+      setisconfirmed(true);
+      setTimeout(() => {
+        setisconfirmed(false);
+      }, 3000);
+    }
   }
 
-  function confirmdata() {}
   function handleinputchange(event) {
-    //event is a parameter automatically passed by event handler(such as onclick,onchange,onsubmit etc), event is a object that contains various data about that particular element. we access those data specifically according to our requirement.
+    //event is a parameter automatically passed by event handler(such as onclick,onchange,onsubmit etc),
+    // event is a object that contains various data about that particular element.
+    // we access those data specifically according to our requirement.
     const { name, value } = event.target; //this is same as writting const name=event.target.name; const value=event.target.value;
     //  it is just a short form to write the same thing it is called object destructurign.
     //  we can also assign the value in different varible by using a colon .
@@ -44,16 +59,47 @@ function Jobform() {
     //because the name="companyname" so react knows that it should update the varaible of object with name "companyname"
     //the name field of the element should be exactly same to the variable name inside that object.
     //for example: name field of the element should be jobtitle if we want to change the jobtitle variable of that object and so on for all other variables.
+    if (error[name] && value.trim() !== "") {
+      seterror((preverror) => {
+        const newerror = { ...preverror };
+        delete newerror[name];
+        return newerror;
+      });
+    }
+  }
+  const [error, seterror] = useState({});
+  function formvalidation() {
+    const newerror = {};
+    if (!formdata.companyname.trim())
+      newerror.companyname = "Company name is required";
+    if (!formdata.dateofapplication.trim())
+      newerror.dateofapplication = "Date of application is required";
+    if (!formdata.jobtitle.trim()) newerror.jobtitle = "Job title is required";
+    if (!formdata.status.trim())
+      newerror.status = "Status of the job is required";
+    if (!formdata.jobtype.trim()) newerror.jobtype = "Job type is required";
+    if (!formdata.joblocation.trim())
+      newerror.joblocation = "Job location is required";
+    if (!formdata.applicationsource.trim())
+      newerror.applicationsource = "Source for application submission";
+    seterror(newerror);
+    return Object.keys(newerror).length === 0; //Object.key is a object method it returns the array of key of that particular specified object,
+    //  in our case we specified newerror object
+    // so it returns the array of key which we assigned as name (i.e we did key={name})of newerror object.
+    //.length method finds the length of array and compares it with 0,
+    //  if array is null ie no error then it becomes true and true is returned, else false is returned.
   }
   return (
     <div className="flex justify-center bg-blue-100">
-      <div className=" rounded-[8px] flex  gap-2 flex-col pl-[100px] pt-[20px] bg-gray-300 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
-        <h1 className=" font-bold text-purple-800 bg-gray-200 max-w-fit text-4xl p-[10px] rounded-[5px] ml-[130px]">
+      <div className=" rounded-[8px] flex  gap-2 flex-col pl-[100px] pr-[10px] pt-[20px] bg-gray-200 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
+        <h1 className=" font-bold text-purple-800 bg-white max-w-fit text-4xl p-[10px] rounded-[5px] ml-[130px]">
           Job Application Form
         </h1>
         <br></br>
         <div className="flex gap-3 flex-col">
-          <span className="font-semibold  text-[25px] ">Company Name : </span>
+          <span className="font-semibold  text-[25px] Inter ">
+            Company Name :{" "}
+          </span>
           <input
             className=" w-[500px] h-[40px] text-[20px] bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm"
             type="text"
@@ -62,6 +108,7 @@ function Jobform() {
             value={formdata.companyname}
             name="companyname"
           ></input>
+          {error.companyname && <p>{error.companyname}</p>}
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]">
@@ -69,12 +116,14 @@ function Jobform() {
           </span>
           <input
             className=" bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm w-[500px] h-[40px] text-[20px] "
-            type="text"
+            type="date"
             placeholder="Date of application"
             onChange={handleinputchange}
             value={formdata.dateofapplication}
             name="dateofapplication"
           ></input>
+
+          {error.dateofapplication && <p>{error.dateofapplication}</p>}
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]">Job Title : </span>
@@ -86,6 +135,7 @@ function Jobform() {
             value={formdata.jobtitle}
             name="jobtitle"
           ></input>
+          {error.jobtitle && <p>{error.jobtitle}</p>}
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]">Job Status : </span>
@@ -107,6 +157,7 @@ function Jobform() {
             <option value="rejected">Rejected</option>
             <option value="withdrawn">Withdrawn</option>
           </select>
+          {error.status && <p>{error.status}</p>}
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]"> Type of Job : </span>
@@ -123,6 +174,7 @@ function Jobform() {
             <option value="onsite">Onsite</option>
             <option value="hybrid">Hybrid</option>
           </select>
+          {error.jobtype && <p>{error.jobtype}</p>}
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]">
@@ -149,6 +201,7 @@ function Jobform() {
             value={formdata.applicationsource}
             name="applicationsource"
           ></input>
+          {error.sourceofapplication && <p>{error.sourceofapplication}</p>}
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]">Your Resume : </span>
@@ -156,6 +209,7 @@ function Jobform() {
             className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="file"
             placeholder="Drop Your Resume"
+            name="resume"
           ></input>
         </div>
         <div className="flex gap-3 flex-col">
@@ -166,12 +220,14 @@ function Jobform() {
             className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="file"
             placeholder=" Drop Your cover letter"
+            name="coverletter"
           ></input>
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]">Note : </span>
           <input
-            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg
+            "
             type="text"
             placeholder="Leave your notes (Optional)"
             onChange={handleinputchange}
@@ -179,7 +235,7 @@ function Jobform() {
             name="notes"
           ></input>
         </div>
-        <div className="flex gap-10 ml-[500px]">
+        <div className="flex gap-10 justify-end">
           <button
             onClick={resetdata}
             className="text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-black hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
@@ -194,6 +250,21 @@ function Jobform() {
             Confirm
           </button>
         </div>
+      </div>
+      <div className="fixed bottom-10 ">
+        {isconfirmed && (
+          <p className=" text-blue-800 w-fit px-8 h-[45px] text-[24px] bg-green-100 font-semibold rounded-2xl  ">
+            Data updated sucessfully ✅{" "}
+          </p>
+        )}
+      </div>
+
+      <div className="fixed bottom-10  ">
+        {isreset && (
+          <p className=" text-red-800 w-fit px-8 h-[45px] text-[24px] bg-red-100 font-semibold rounded-2xl  ">
+            Data has been Reset{" "}
+          </p>
+        )}
       </div>
     </div>
   );
