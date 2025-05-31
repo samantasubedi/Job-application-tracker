@@ -4,11 +4,7 @@ function App() {
   return (
     <>
       <Jobform></Jobform>;
-      <ToastContainer
-        position="bottom-center"
-        autoClose="500"
-        theme="colored"
-      />
+      <ToastContainer position="top-center" autoClose="1500" theme="colored" />
     </>
   );
 }

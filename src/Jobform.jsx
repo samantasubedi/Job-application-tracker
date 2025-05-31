@@ -11,13 +11,13 @@ function Jobform() {
     jobtype: "",
     joblocation: "",
     applicationsource: "",
-    resume: "",
+    resume: null,
     coverletter: null,
     notes: "",
   });
 
   function resetdata() {
-    toast.error("Form reset");
+    toast.error("Form has been reset");
     setformdata({
       companyname: "",
       dateofapplication: "",
@@ -26,18 +26,19 @@ function Jobform() {
       jobtype: "",
       joblocation: "",
       applicationsource: "",
-      resume: [],
+      resume: null,
       coverletter: null,
       notes: "",
     });
   }
-  const [isconfirmed, setisconfirmed] = useState(false);
+  // const [isconfirmed, setisconfirmed] = useState(false);
   function confirmdata() {
     if (formvalidation()) {
-      setisconfirmed(true);
-      setTimeout(() => {
-        setisconfirmed(false);
-      }, 3000);
+      toast.success("Form has been submitted successfully");
+      // setisconfirmed(true);
+      // setTimeout(() => {
+      //   setisconfirmed(false);
+      // }, 3000);
     }
   }
 
@@ -74,18 +75,21 @@ function Jobform() {
   function formvalidation() {
     const newerror = {};
     if (!formdata.companyname.trim())
-      newerror.companyname = "Company name is required";
+      newerror.companyname = "Company name is required !";
     if (!formdata.dateofapplication.trim())
-      newerror.dateofapplication = "Date of application is required";
-    if (!formdata.jobtitle.trim()) newerror.jobtitle = "Job title is required";
+      newerror.dateofapplication = "Date of application is required !";
+    if (!formdata.jobtitle.trim())
+      newerror.jobtitle = "Job title is required !";
     if (!formdata.status.trim())
-      newerror.status = "Status of the job is required";
-    if (!formdata.jobtype.trim()) newerror.jobtype = "Job type is required";
+      newerror.status = "Status of the job is required !";
+    if (!formdata.jobtype.trim()) newerror.jobtype = "Job type is required !";
     if (!formdata.joblocation.trim())
-      newerror.joblocation = "Job location is required";
+      newerror.joblocation = "Job location is required !";
     if (!formdata.applicationsource.trim())
-      newerror.applicationsource = "Source for application submission";
-    if (!formdata.resume) newerror.resume = "Resume is required";
+      newerror.applicationsource = "Source for application submission !";
+    if (!formdata.resume) newerror.resume = "Resume is required !";
+    if (!formdata.coverletter)
+      newerror.coverletter = "Cover letter is required !";
     seterror(newerror);
     return Object.keys(newerror).length === 0; //Object.key is a object method it returns the array of key of that particular specified object,
     //  in our case we specified newerror object
@@ -95,14 +99,14 @@ function Jobform() {
   }
   return (
     <div className="flex justify-center bg-blue-100">
-      <div className=" rounded-[8px] flex  gap-2 flex-col pl-[100px] pr-[10px] pt-[20px] bg-gray-200 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
-        <h1 className=" font-bold text-purple-800 bg-white max-w-fit text-4xl p-[10px] rounded-[5px] ml-[130px]">
+      <div className=" rounded-[8px] flex  gap-12 flex-col pl-[100px] pr-[10px] pt-[20px] bg-gray-200 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
+        <h1 className=" font-bold text-purple-800 bg-white max-w-fit text-4xl p-[10px] rounded-[5px]  ml-[130px]  absolute  ">
           Job Application Form
         </h1>
         <br></br>
-        <div className="flex gap-3 flex-col">
+        <div className="flex gap-3 flex-col relative ">
           <span className="font-semibold  text-[25px] Inter ">
-            Company Name :{" "}
+            🏢 Company Name :{" "}
           </span>
           <input
             className=" w-[500px] h-[40px] text-[20px] bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm"
@@ -112,11 +116,15 @@ function Jobform() {
             value={formdata.companyname}
             name="companyname"
           ></input>
-          {error.companyname && <p>{error.companyname}</p>}
+          {error.companyname && (
+            <p className="text-red-600 absolute top-[100px]">
+              {error.companyname}
+            </p>
+          )}
         </div>
-        <div className="flex gap-3 flex-col">
+        <div className="flex gap-3 flex-col relative">
           <span className="font-semibold  text-[25px]">
-            Date of Application :{" "}
+            📅 Date of Application :{" "}
           </span>
           <input
             className=" bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm w-[500px] h-[40px] text-[20px] "
@@ -127,10 +135,14 @@ function Jobform() {
             name="dateofapplication"
           ></input>
 
-          {error.dateofapplication && <p>{error.dateofapplication}</p>}
+          {error.dateofapplication && (
+            <p className="text-red-600 absolute top-[100px]">
+              {error.dateofapplication}
+            </p>
+          )}
         </div>
-        <div className="flex gap-3 flex-col">
-          <span className="font-semibold  text-[25px]">Job Title : </span>
+        <div className="flex gap-3 flex-col relative">
+          <span className="font-semibold  text-[25px]"> 💼 Job Title : </span>
           <input
             className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="text"
@@ -139,10 +151,14 @@ function Jobform() {
             value={formdata.jobtitle}
             name="jobtitle"
           ></input>
-          {error.jobtitle && <p>{error.jobtitle}</p>}
+          {error.jobtitle && (
+            <p className="text-red-600 absolute top-[100px]">
+              {error.jobtitle}
+            </p>
+          )}
         </div>
-        <div className="flex gap-3 flex-col">
-          <span className="font-semibold  text-[25px]">Job Status : </span>
+        <div className="flex gap-3 flex-col relative">
+          <span className="font-semibold  text-[25px]">📊 Job Status : </span>
           <select
             className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="text"
@@ -152,19 +168,21 @@ function Jobform() {
             name="status"
           >
             <option value="">Select the job status</option>
-            <option value="applied">Applied</option>
-            <option value="under review">Under Review</option>
-            <option value="interview scheduled">Interview Scheduled</option>
-            <option value="interviewed">Interviewed</option>
-            <option value="offer received">Offer Received</option>
-            <option value="accepted offer">Accepted Offer</option>
-            <option value="rejected">Rejected</option>
-            <option value="withdrawn">Withdrawn</option>
+            <option value="applied"> 📤 Applied</option>
+            <option value="under review">🔍 Under Review</option>
+            <option value="interview scheduled"> 📅 Interview Scheduled</option>
+            <option value="interviewed"> 🎤 Interviewed</option>
+            <option value="offer received"> 📬 Offer Received</option>
+            <option value="accepted offer"> ✅ Accepted Offer</option>
+            <option value="rejected"> ❌ Rejected</option>
+            <option value="withdrawn"> ↩️ Withdrawn</option>
           </select>
-          {error.status && <p>{error.status}</p>}
+          {error.status && (
+            <p className="text-red-600 absolute top-[100px]">{error.status}</p>
+          )}
         </div>
-        <div className="flex gap-3 flex-col">
-          <span className="font-semibold  text-[25px]"> Type of Job : </span>
+        <div className="flex gap-3 flex-col relative">
+          <span className="font-semibold  text-[25px]"> 🔄 Type of Job : </span>
           <select
             className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="text"
@@ -174,15 +192,17 @@ function Jobform() {
             name="jobtype"
           >
             <option value="">Select job type</option>
-            <option value="remote">Remote</option>
-            <option value="onsite">Onsite</option>
-            <option value="hybrid">Hybrid</option>
+            <option value="remote"> 🌐 Remote</option>
+            <option value="onsite"> 🏢 Onsite</option>
+            <option value="hybrid"> 🔄 Hybrid</option>
           </select>
-          {error.jobtype && <p>{error.jobtype}</p>}
+          {error.jobtype && (
+            <p className="text-red-600 absolute top-[100px]">{error.jobtype}</p>
+          )}
         </div>
-        <div className="flex gap-3 flex-col">
+        <div className="flex gap-3 flex-col relative">
           <span className="font-semibold  text-[25px]">
-            Location of the Company :{" "}
+            📍 Location of the Company :{" "}
           </span>
           <input
             className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
@@ -192,10 +212,15 @@ function Jobform() {
             value={formdata.joblocation}
             name="joblocation"
           ></input>
+          {error.joblocation && (
+            <p className="text-red-600 absolute top-[100px]">
+              {error.joblocation}
+            </p>
+          )}
         </div>
-        <div className="flex gap-3 flex-col">
+        <div className="flex gap-3 flex-col relative">
           <span className="font-semibold  text-[25px]">
-            Source of Application :{" "}
+            🔗 Source of Application :{" "}
           </span>
           <input
             className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
@@ -205,10 +230,14 @@ function Jobform() {
             value={formdata.applicationsource}
             name="applicationsource"
           ></input>
-          {error.applicationsource && <p>{error.applicationsource}</p>}
+          {error.applicationsource && (
+            <p className="text-red-600 absolute top-[100px]">
+              {error.applicationsource}
+            </p>
+          )}
         </div>
-        <div className="flex gap-3 flex-col">
-          <span className="font-semibold  text-[25px]">Your Resume : </span>
+        <div className="flex gap-3 flex-col relative">
+          <span className="font-semibold  text-[25px]"> 📄 Your Resume : </span>
           <input
             className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="file"
@@ -217,21 +246,30 @@ function Jobform() {
             onChange={handleinputchange}
             value={formdata.resume}
           ></input>
-          {error.resume && <p>{error.resume}</p>}
+          {error.resume && (
+            <p className="text-red-600 absolute top-[100px]">{error.resume}</p>
+          )}
         </div>
-        <div className="flex gap-3 flex-col">
+        <div className="flex gap-3 flex-col relative">
           <span className="font-semibold  text-[25px]">
-            Your Cover Letter :{" "}
+            📝 Your Cover Letter :{" "}
           </span>
           <input
             className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
             type="file"
             placeholder=" Drop Your cover letter"
             name="coverletter"
+            value={formdata.coverletter}
+            onChange={handleinputchange}
           ></input>
+          {error.coverletter && (
+            <p className="text-red-600 absolute top-[100px]">
+              {error.coverletter}
+            </p>
+          )}
         </div>
-        <div className="flex gap-3 flex-col">
-          <span className="font-semibold  text-[25px]">Note : </span>
+        <div className="flex gap-3 flex-col relative">
+          <span className="font-semibold  text-[25px]"> ✍️ Note : </span>
           <textarea
             className=" shadow-black shadow-sm w-[500px]  text-[20px]  bg-yellow-100 p-2 rounded-lg
             "
@@ -246,7 +284,7 @@ function Jobform() {
         <div className="flex gap-10 justify-end">
           <button
             onClick={resetdata}
-            className="text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
+            className="  transition-all ease-in-out text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
           >
             Reset
           </button>
@@ -259,13 +297,13 @@ function Jobform() {
           </button>
         </div>
       </div>
-      <div className="fixed bottom-10 ">
+      {/* <div className="fixed bottom-10 ">
         {isconfirmed && (
           <p className=" text-blue-800 w-fit px-8 h-[45px] text-[24px] bg-green-100 font-semibold rounded-2xl  ">
             Data updated sucessfully ✅{" "}
           </p>
         )}
-      </div>
+      </div> */}
 
       <div className="fixed bottom-10  "></div>
     </div>
