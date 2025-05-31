@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 function Jobform() {
+  const [error, seterror] = useState({});
   const [formdata, setformdata] = useState({
     companyname: "",
     dateofapplication: "",
@@ -9,9 +11,13 @@ function Jobform() {
     jobtype: "",
     joblocation: "",
     applicationsource: "",
+    resume: "",
+    coverletter: null,
     notes: "",
   });
+
   function resetdata() {
+    toast.error("Form reset");
     setformdata({
       companyname: "",
       dateofapplication: "",
@@ -20,14 +26,11 @@ function Jobform() {
       jobtype: "",
       joblocation: "",
       applicationsource: "",
+      resume: [],
+      coverletter: null,
       notes: "",
     });
-    setisreset(true);
-    setTimeout(() => {
-      setisreset(false);
-    }, 3000);
   }
-  const [isreset, setisreset] = useState(false);
   const [isconfirmed, setisconfirmed] = useState(false);
   function confirmdata() {
     if (formvalidation()) {
@@ -59,7 +62,7 @@ function Jobform() {
     //because the name="companyname" so react knows that it should update the varaible of object with name "companyname"
     //the name field of the element should be exactly same to the variable name inside that object.
     //for example: name field of the element should be jobtitle if we want to change the jobtitle variable of that object and so on for all other variables.
-    if (error[name] && value.trim() !== "") {
+    if (error[name] && value.trim()) {
       seterror((preverror) => {
         const newerror = { ...preverror };
         delete newerror[name];
@@ -67,7 +70,7 @@ function Jobform() {
       });
     }
   }
-  const [error, seterror] = useState({});
+
   function formvalidation() {
     const newerror = {};
     if (!formdata.companyname.trim())
@@ -82,6 +85,7 @@ function Jobform() {
       newerror.joblocation = "Job location is required";
     if (!formdata.applicationsource.trim())
       newerror.applicationsource = "Source for application submission";
+    if (!formdata.resume) newerror.resume = "Resume is required";
     seterror(newerror);
     return Object.keys(newerror).length === 0; //Object.key is a object method it returns the array of key of that particular specified object,
     //  in our case we specified newerror object
@@ -201,7 +205,7 @@ function Jobform() {
             value={formdata.applicationsource}
             name="applicationsource"
           ></input>
-          {error.sourceofapplication && <p>{error.sourceofapplication}</p>}
+          {error.applicationsource && <p>{error.applicationsource}</p>}
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]">Your Resume : </span>
@@ -210,7 +214,10 @@ function Jobform() {
             type="file"
             placeholder="Drop Your Resume"
             name="resume"
+            onChange={handleinputchange}
+            value={formdata.resume}
           ></input>
+          {error.resume && <p>{error.resume}</p>}
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]">
@@ -225,27 +232,28 @@ function Jobform() {
         </div>
         <div className="flex gap-3 flex-col">
           <span className="font-semibold  text-[25px]">Note : </span>
-          <input
-            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg
+          <textarea
+            className=" shadow-black shadow-sm w-[500px]  text-[20px]  bg-yellow-100 p-2 rounded-lg
             "
             type="text"
+            rows={5}
             placeholder="Leave your notes (Optional)"
             onChange={handleinputchange}
             value={formdata.notes}
             name="notes"
-          ></input>
+          ></textarea>
         </div>
         <div className="flex gap-10 justify-end">
           <button
             onClick={resetdata}
-            className="text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-black hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
+            className="text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
           >
             Reset
           </button>
 
           <button
             onClick={confirmdata}
-            className="text-xl text-purple-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-black hover:translate-y-1 cursor-pointer hover:bg-blue-100 hover:text-green-800"
+            className=" transition-all ease-in-out text-xl text-purple-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-blue-100 hover:text-green-800"
           >
             Confirm
           </button>
@@ -259,13 +267,7 @@ function Jobform() {
         )}
       </div>
 
-      <div className="fixed bottom-10  ">
-        {isreset && (
-          <p className=" text-red-800 w-fit px-8 h-[45px] text-[24px] bg-red-100 font-semibold rounded-2xl  ">
-            Data has been Reset{" "}
-          </p>
-        )}
-      </div>
+      <div className="fixed bottom-10  "></div>
     </div>
   );
 }
