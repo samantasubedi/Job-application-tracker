@@ -26,8 +26,8 @@ function Jobform() {
       jobtype: "",
       joblocation: "",
       applicationsource: "",
-      resume: null,
-      coverletter: null,
+      resume: "",
+      coverletter: "",
       notes: "",
     });
   }
@@ -39,6 +39,11 @@ function Jobform() {
       // setTimeout(() => {
       //   setisconfirmed(false);
       // }, 3000);
+      const existingjobs =
+        JSON.parse(localStorage.getItem("jobapplications")) || [];
+      const updatejobs = [...existingjobs, formdata];
+      localStorage.setItem("jobapplications", JSON.stringify(updatejobs));
+      resetdata();
     }
   }
 
@@ -98,7 +103,7 @@ function Jobform() {
     //  if array is null ie no error then it becomes true and true is returned, else false is returned.
   }
   return (
-    <div className="flex justify-center bg-blue-100">
+    <div className="flex justify-center bg-gradient-to-r from-purple-300 to-pink-300 ">
       <div className=" rounded-[8px] flex  gap-12 flex-col pl-[100px] pr-[10px] pt-[20px] bg-gray-200 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
         <h1 className=" font-bold text-purple-800 bg-white max-w-fit text-4xl p-[10px] rounded-[5px]  ml-[130px]  absolute  ">
           Job Application Form
@@ -245,6 +250,7 @@ function Jobform() {
             name="resume"
             onChange={handleinputchange}
             value={formdata.resume}
+            selected={formdata.resume.name || ""}
           ></input>
           {error.resume && (
             <p className="text-red-600 absolute top-[100px]">{error.resume}</p>
@@ -261,6 +267,7 @@ function Jobform() {
             name="coverletter"
             value={formdata.coverletter}
             onChange={handleinputchange}
+            selected={formdata.resume.name || ""}
           ></input>
           {error.coverletter && (
             <p className="text-red-600 absolute top-[100px]">
