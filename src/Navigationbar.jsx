@@ -1,26 +1,46 @@
+import React from "react";
+import { Link } from "react-router-dom";
 function Navigationbar() {
   return (
     <div className="flex justify-center">
-      <div className="flex  p-2 gap-16  w-fit rounded-2xl">
-        <button className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     ">
+      <div className="flex  p-2 gap-16  w-fit rounded-2xl ">
+        <Link
+          to="/"
+          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+        >
           Home
-        </button>
-        <button className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     ">
+        </Link>
+        <Link
+          to="/features"
+          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+        >
           Features
-        </button>
+        </Link>
 
-        <button className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     ">
+        <Link
+          to="/data-entry"
+          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+        >
           Data Entry
-        </button>
-        <button className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     ">
+        </Link>
+        <Link
+          to="/preview"
+          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+        >
           Preview
-        </button>
-        <button className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     ">
+        </Link>
+        <Link
+          to="/Testimonials"
+          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+        >
           Testimonials
-        </button>
-        <button className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     ">
+        </Link>
+        <Link
+          to="/faq"
+          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+        >
           FAQ
-        </button>
+        </Link>
       </div>
     </div>
   );

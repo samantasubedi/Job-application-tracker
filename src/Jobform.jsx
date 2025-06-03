@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import Navigationbar from "./Navigationbar";
 
 function Jobform() {
   const [error, seterror] = useState({});
@@ -89,7 +90,7 @@ function Jobform() {
       newerror.status = "Status of the job is required !";
     if (!formdata.jobtype.trim()) newerror.jobtype = "Job type is required !";
     if (!formdata.joblocation.trim())
-      newerror.joblocation = "Job location is required !";
+      newerror.joblocation = "Company location is required !";
     if (!formdata.applicationsource.trim())
       newerror.applicationsource = "Source for application submission !";
     if (!formdata.resume) newerror.resume = "Resume is required !";
@@ -103,7 +104,8 @@ function Jobform() {
     //  if array is null ie no error then it becomes true and true is returned, else false is returned.
   }
   return (
-    <div className="flex justify-center bg-gradient-to-r from-purple-300 to-pink-300 ">
+    <div className="flex justify-center items-center flex-col gap-4 bg-gradient-to-r from-purple-500 to-pink-400 ">
+      <Navigationbar />
       <div className=" rounded-[8px] flex  gap-12 flex-col pl-[100px] pr-[10px] pt-[20px] bg-gray-200 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
         <h1 className=" font-bold text-purple-800 bg-white max-w-fit text-4xl p-[10px] rounded-[5px]  ml-[130px]  absolute  ">
           Job Application Form
@@ -250,7 +252,6 @@ function Jobform() {
             name="resume"
             onChange={handleinputchange}
             value={formdata.resume}
-            selected={formdata.resume.name || ""}
           ></input>
           {error.resume && (
             <p className="text-red-600 absolute top-[100px]">{error.resume}</p>
@@ -267,7 +268,6 @@ function Jobform() {
             name="coverletter"
             value={formdata.coverletter}
             onChange={handleinputchange}
-            selected={formdata.resume.name || ""}
           ></input>
           {error.coverletter && (
             <p className="text-red-600 absolute top-[100px]">
