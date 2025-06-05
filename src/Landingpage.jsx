@@ -4,6 +4,7 @@ import { TiSocialLinkedinCircular } from "react-icons/ti";
 import { BsTwitterX } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import Navigationbar from "./Navigationbar";
+import { Link } from "react-router-dom";
 
 function Landingpage() {
   return (
@@ -32,9 +33,12 @@ function Landingpage() {
               in one place.
             </p>
           </div>
-          <button className=" bg-amber-300 p-[10px] font-bold rounded-[20px] left-[350px] top-[90px] absolute text-[25px] hover:bg-lime-200 hover:text-[28px] hover:cursor-pointer hover:text-blue-600">
+          <Link
+            to="./dataentry"
+            className=" bg-amber-300 p-[10px] font-bold rounded-[20px] left-[350px] top-[90px] absolute text-[25px] hover:bg-lime-200 hover:text-[28px] hover:cursor-pointer hover:text-blue-600"
+          >
             Get Started
-          </button>
+          </Link>
         </div>
         <div className="relative">
           <div className="absolute h-[500px] w-[600px] bg-white left-[800px] top-[100px]"></div>

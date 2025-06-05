@@ -10,7 +10,7 @@ function Jobform() {
     jobtitle: "",
     status: "",
     jobtype: "",
-    joblocation: "",
+    companylocation: "",
     applicationsource: "",
     resume: null,
     coverletter: null,
@@ -25,7 +25,7 @@ function Jobform() {
       jobtitle: "",
       status: "",
       jobtype: "",
-      joblocation: "",
+      companylocation: "",
       applicationsource: "",
       resume: "",
       coverletter: "",
@@ -42,9 +42,20 @@ function Jobform() {
       // }, 3000);
       const existingjobs =
         JSON.parse(localStorage.getItem("jobapplications")) || [];
-      const updatejobs = [...existingjobs, formdata];
-      localStorage.setItem("jobapplications", JSON.stringify(updatejobs));
-      resetdata();
+      const updatedjobs = [...existingjobs, formdata];
+      localStorage.setItem("jobapplications", JSON.stringify(updatedjobs));
+      setformdata({
+        companyname: "",
+        dateofapplication: "",
+        jobtitle: "",
+        status: "",
+        jobtype: "",
+        companylocation: "",
+        applicationsource: "",
+        resume: "",
+        coverletter: "",
+        notes: "",
+      });
     }
   }
 
@@ -89,8 +100,8 @@ function Jobform() {
     if (!formdata.status.trim())
       newerror.status = "Status of the job is required !";
     if (!formdata.jobtype.trim()) newerror.jobtype = "Job type is required !";
-    if (!formdata.joblocation.trim())
-      newerror.joblocation = "Company location is required !";
+    if (!formdata.companylocation.trim())
+      newerror.companylocation = "Company location is required !";
     if (!formdata.applicationsource.trim())
       newerror.applicationsource = "Source for application submission !";
     if (!formdata.resume) newerror.resume = "Resume is required !";
@@ -106,8 +117,8 @@ function Jobform() {
   return (
     <div className="flex justify-center items-center flex-col gap-4 bg-gradient-to-r from-purple-500 to-pink-400 ">
       <Navigationbar />
-      <div className=" rounded-[8px] flex  gap-12 flex-col pl-[100px] pr-[10px] pt-[20px] bg-gray-200 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
-        <h1 className=" font-bold text-purple-800 bg-white max-w-fit text-4xl p-[10px] rounded-[5px]  ml-[130px]  absolute  ">
+      <div className=" rounded-[8px] flex  gap-12 flex-col pl-[100px] pr-[10px] pt-[20px] bg-emerald-100 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
+        <h1 className=" font-bold text-purple-800 bg-emerald-300 max-w-fit text-4xl p-[10px] rounded-[5px]  ml-[130px]  absolute  ">
           Job Application Form
         </h1>
         <br></br>
@@ -216,12 +227,12 @@ function Jobform() {
             type="text"
             placeholder="Company location"
             onChange={handleinputchange}
-            value={formdata.joblocation}
-            name="joblocation"
+            value={formdata.companylocation}
+            name="companylocation"
           ></input>
-          {error.joblocation && (
+          {error.companylocation && (
             <p className="text-red-600 absolute top-[100px]">
-              {error.joblocation}
+              {error.companylocation}
             </p>
           )}
         </div>

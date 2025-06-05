@@ -3,41 +3,48 @@ import { Link } from "react-router-dom";
 function Navigationbar() {
   return (
     <div className="flex justify-center">
-      <div className="flex  p-2 gap-16  w-fit rounded-2xl ">
+      <div className="flex  p-5 gap-16   rounded-2xl ">
         <Link
           to="/"
-          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+          className="text-white text-lg font-bold p-3 rounded-2xl hover:underline  hover:cursor-pointer hover:translate-y-1 transition-all ease-in-out "
         >
           Home
         </Link>
         <Link
+          to="/myapplications"
+          className="text-white text-lg font-bold p-3 rounded-2xl hover:underline  hover:cursor-pointer hover:translate-y-1 transition-all ease-in-out "
+        >
+          My Applications
+        </Link>
+
+        <Link
           to="/features"
-          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+          className="text-white text-lg font-bold p-3 rounded-2xl hover:underline  hover:cursor-pointer hover:translate-y-1 transition-all ease-in-out "
         >
           Features
         </Link>
 
         <Link
-          to="/data-entry"
-          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+          to="/dataentry"
+          className="text-white text-lg font-bold p-3 rounded-2xl hover:underline  hover:cursor-pointer hover:translate-y-1 transition-all ease-in-out "
         >
           Data Entry
         </Link>
         <Link
           to="/preview"
-          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+          className="text-white text-lg font-bold p-3 rounded-2xl hover:underline  hover:cursor-pointer hover:translate-y-1 transition-all ease-in-out "
         >
           Preview
         </Link>
         <Link
-          to="/Testimonials"
-          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+          to="/testimonials"
+          className="text-white text-lg font-bold p-3 rounded-2xl hover:underline  hover:cursor-pointer hover:translate-y-1 transition-all ease-in-out "
         >
           Testimonials
         </Link>
         <Link
           to="/faq"
-          className="text-white text-lg font-semibold p-3 rounded-2xl hover:bg-lime-200 hover:cursor-pointer hover:text-blue-900 hover:translate-y-1 transition-all ease-in-out hover:shadow-md shadow-white     "
+          className="text-white text-lg font-bold p-3 rounded-2xl hover:underline  hover:cursor-pointer hover:translate-y-1 transition-all ease-in-out "
         >
           FAQ
         </Link>
