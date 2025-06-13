@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navigationbar from "./Navigationbar";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 function Myapplications() {
   const [applications, setapplications] = useState([]);
   const [showconfirm, setshowconfirm] = useState(false);
@@ -9,13 +10,16 @@ function Myapplications() {
     setindextodelete(index);
     setshowconfirm(true);
   }
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedapplications =
       JSON.parse(localStorage.getItem("jobapplications")) || [];
     setapplications(savedapplications);
   }, []);
-  function editapplication() {}
+  function editapplication(index) {
+    navigate(`/edit/${index}`);
+  }
   function confirmdelete() {
     const updatedapplications = applications.filter(
       (_, index) => index !== indextodelete

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import Navigationbar from "./Navigationbar";
+import { useParams } from "react-router-dom";
 
 function Jobform() {
   const [error, seterror] = useState({});
@@ -12,10 +13,23 @@ function Jobform() {
     jobtype: "",
     companylocation: "",
     applicationsource: "",
-    resume: null,
-    coverletter: null,
+    resume: "",
+    coverletter: "",
     notes: "",
   });
+  const { index } = useParams();
+  const id = Number(index);
+
+  useEffect(() => {
+    const alldata = JSON.parse(localStorage.getItem("jobapplications"));
+    if (id >= 0 && id < alldata.length) {
+      const editingdata = alldata[id];
+      console.log(editingdata);
+      if (editingdata) {
+        setformdata(editingdata);
+      }
+    }
+  }, [id]);
 
   function resetdata() {
     toast.error("Form has been reset");
