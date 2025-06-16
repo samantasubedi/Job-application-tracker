@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import Navigationbar from "./Navigationbar";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react/dist/iconify.js";
 function Myapplications() {
   const [applications, setapplications] = useState([]);
   const [showconfirm, setshowconfirm] = useState(false);
   const [indextodelete, setindextodelete] = useState(null);
   function deleteclicked(index) {
+    console.log("delete clicked", index);
     setindextodelete(index);
     setshowconfirm(true);
+    console.log(showconfirm);
   }
   const navigate = useNavigate();
 
@@ -35,8 +38,37 @@ function Myapplications() {
 
   return (
     <>
-      <div className="h-fit pb-10 bg-gradient-to-r from-purple-500 to-red-400 relative">
+      <div className="h-fit pb-10 bg-gradient-to-r from-purple-500 to-red-400 relative min-h-screen">
         <Navigationbar />
+        <div className="flex justify-evenly font-semibold bg-gray-300 p-1">
+          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+            All
+          </button>
+          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+            Applied
+          </button>
+          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+            Under Review
+          </button>
+          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+            Interview Scheduled
+          </button>
+          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+            Interviewed
+          </button>
+          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+            Offer Received
+          </button>
+          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+            Accepted Offer
+          </button>
+          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+            Rejected
+          </button>
+          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+            Withdrawn
+          </button>
+        </div>
         <img
           src="./logo.png"
           alt="logo"
@@ -89,32 +121,34 @@ function Myapplications() {
               </div>
             </div>
           ))}
-          {showconfirm && (
-            <div className="relative">
-              <div className="flex flex-col gap-5 bg-red-200 p-5 fixed  left-[650px] rounded-3xl w-[300px]">
-                <p className="text-red-500 font-semibold">
-                  All the data of this application will be permanently deleted !
-                </p>
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => {
-                      setshowconfirm(false);
-                    }}
-                    className="bg-blue-400 p-2 rounded-2xl"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={confirmdelete}
-                    className="bg-red-400 p-2 rounded-2xl"
-                  >
-                    Confirm
-                  </button>
-                </div>
+        </div>
+        {showconfirm && (
+          <div className="relative">
+            <div className="flex flex-col gap-5 bg-red-200 p-5 fixed top-5  left-1/2 -translate-x-1/2 rounded-3xl w-[300px] z-50">
+              <p className="text-red-500 font-semibold flex  flex-col items-center ">
+                <Icon icon="fluent-color:warning-28" width="50" height="50" />
+                All the data of this application will be permanently deleted !
+                Are you sure want to delete?
+              </p>
+              <div className="flex gap-4 justify-end">
+                <button
+                  onClick={() => {
+                    setshowconfirm(false);
+                  }}
+                  className=" text-white bg-blue-400 p-2 rounded-xl hover:bg-blue-500 cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={confirmdelete}
+                  className="bg-red-400 p-2 rounded-xl cursor-pointer text-white shadow-md hover:bg-red-500"
+                >
+                  Confirm
+                </button>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );

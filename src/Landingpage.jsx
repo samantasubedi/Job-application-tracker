@@ -5,6 +5,7 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import Navigationbar from "./Navigationbar";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 function Landingpage() {
   return (
@@ -32,7 +33,9 @@ function Landingpage() {
             <p className=" text-purple-900 text-[40px]">
               Start Tracking Now For{" "}
             </p>
-            <p className="font-bold text-yellow-500 text-[40px]">FREE !</p>
+            <p className="font-bold text-yellow-500 text-[40px] animate-pulse">
+              FREE !
+            </p>
             <p className="text-pink-900 text-[20px] w-[500px] font-semibold bg-purple-300 p-2 rounded-2xl">
               Keep track of your job applications, deadlines, and progress all
               in one place.
@@ -40,9 +43,10 @@ function Landingpage() {
           </div>
           <Link
             to="./dataentry"
-            className=" bg-amber-300 p-[10px] font-bold rounded-[20px] left-[350px] top-[90px] absolute text-[25px] hover:bg-lime-200 hover:text-[28px] hover:cursor-pointer hover:text-blue-600"
+            className="transition-all z-10 flex gap-2 items-center ease-in-out animate-bounce bg-amber-300 p-[10px] font-bold rounded-[20px] left-[350px] top-[90px] absolute text-[25px] hover:bg-lime-200 hover:text-[28px] hover:cursor-pointer hover:text-blue-600"
           >
             Get Started
+            <Icon icon="noto:rocket" width="40" height="40" />
           </Link>
         </div>
         <div className="relative">

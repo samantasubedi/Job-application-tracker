@@ -30,12 +30,12 @@ function Navigationbar() {
         >
           Data Entry
         </Link>
-        <Link
+        {/* <Link
           to="/preview"
           className="text-white text-lg font-bold p-3 rounded-2xl hover:underline  hover:cursor-pointer hover:translate-y-1 transition-all ease-in-out "
         >
           Preview
-        </Link>
+        </Link> */}
         <Link
           to="/testimonials"
           className="text-white text-lg font-bold p-3 rounded-2xl hover:underline  hover:cursor-pointer hover:translate-y-1 transition-all ease-in-out "
