@@ -35,8 +35,13 @@ function Myapplications() {
 
   return (
     <>
-      <div className="h-screen bg-gradient-to-r from-purple-500 to-red-400 relative">
+      <div className="h-fit pb-10 bg-gradient-to-r from-purple-500 to-red-400 relative">
         <Navigationbar />
+        <img
+          src="./logo.png"
+          alt="logo"
+          className="h-28 w-50 absolute top-[-25px]"
+        ></img>
         <div className="p-4 w-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[40px] ">
           {applications.map((currentobject, index) => (
             /* here we are mapping the array of objects where each object have their own index*/
@@ -45,37 +50,39 @@ function Myapplications() {
               className="relative flex flex-col gap-5 text-center pt-[30px] bg-purple-100 border-green-800 border-2 p-3 rounded-3xl transition-all duration-500 hover:bg-purple-200"
             >
               {" "}
-              <div className=" absolute left-85 top-[0px] bg-amber-200 w-fit p-1 rounded-2xl">
+              <div className="  bg-amber-200 font-semibold italic w-fit p-2 rounded-2xl">
                 {currentobject.status}
               </div>
               <div className="font-bold text-4xl text-red-700">
                 {currentobject.companyname} , {currentobject.companylocation}
               </div>
-              <div className="font-semibold text-2xl text-yellow-700">
+              <div className="font-semibold text-2xl text-yellow-700 bg-orange-100 p-3 rounded-2xl">
                 {currentobject.jobtitle}
               </div>
-              <div className="text-xl text-blue-700 font-semibold">
-                Applied On : {currentobject.dateofapplication}
+              <div className="bg-cyan-200 flex flex-col gap-3 py-5 rounded-2xl">
+                <div className="text-xl text-blue-700 font-semibold">
+                  Applied On : {currentobject.dateofapplication}
+                </div>
+                <div className="text-blue-700 text-xl font-semibold">
+                  Work Location : {currentobject.jobtype}
+                </div>
+                <div className="text-blue-700 text-xl font-semibold">
+                  Applied via : {currentobject.applicationsource}
+                </div>
               </div>
-              <div className="text-blue-700 text-xl font-semibold">
-                Work Location : {currentobject.jobtype}
-              </div>
-              <div className="text-blue-700 text-xl font-semibold">
-                Applied via : {currentobject.applicationsource}
-              </div>
-              <div className="text-green-600 font-semibold">
-                "{currentobject.notes}"
+              <div className="text-green-600 font-semibold italic bg-emerald-100 rounded-2xl text-xl">
+                {currentobject.notes}
               </div>
               <div className="flex gap-3">
                 <button
                   onClick={() => editapplication(index)}
-                  className="text-xl font-semibold bg-white text-amber-500 transition-all duration-300 hover:bg-yellow-200 hover:cursor-pointer p-2.5 rounded-2xl"
+                  className="text-xl font-semibold bg-white text-amber-700 transition-all duration-300 hover:bg-yellow-400 hover:text-black hover:cursor-pointer p-2.5 rounded-2xl"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => deleteclicked(index)}
-                  className="text-xl font-semibold bg-white text-red-800 transition-all duration-300 hover:bg-red-200 hover:cursor-pointer p-2.5 rounded-2xl "
+                  className="text-xl font-semibold bg-white text-red-600 transition-all duration-300 hover:bg-red-400 hover:text-black hover:cursor-pointer p-2.5 rounded-2xl "
                 >
                   Delete
                 </button>

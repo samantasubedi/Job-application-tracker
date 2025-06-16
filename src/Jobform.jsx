@@ -129,207 +129,229 @@ function Jobform() {
     //  if array is null ie no error then it becomes true and true is returned, else false is returned.
   }
   return (
-    <div className="flex justify-center items-center flex-col gap-4 bg-gradient-to-r from-purple-500 to-pink-400 ">
-      <Navigationbar />
-      <div className=" rounded-[8px] flex  gap-12 flex-col pl-[100px] pr-[10px] pt-[20px] bg-emerald-100 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
-        <h1 className=" font-bold text-purple-800 bg-emerald-300 max-w-fit text-4xl p-[10px] rounded-[5px]  ml-[130px]  absolute  ">
-          Job Application Form
-        </h1>
-        <br></br>
-        <div className="flex gap-3 flex-col relative ">
-          <span className="font-semibold  text-[25px] Inter ">
-            🏢 Company Name :{" "}
-          </span>
-          <input
-            className=" w-[500px] h-[40px] text-[20px] bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm"
-            type="text"
-            placeholder="Name of the company"
-            onChange={handleinputchange}
-            value={formdata.companyname}
-            name="companyname"
-          ></input>
-          {error.companyname && (
-            <p className="text-red-600 absolute top-[100px]">
-              {error.companyname}
-            </p>
-          )}
-        </div>
-        <div className="flex gap-3 flex-col relative">
-          <span className="font-semibold  text-[25px]">
-            📅 Date of Application :{" "}
-          </span>
-          <input
-            className=" bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm w-[500px] h-[40px] text-[20px] "
-            type="date"
-            placeholder="Date of application"
-            onChange={handleinputchange}
-            value={formdata.dateofapplication}
-            name="dateofapplication"
-          ></input>
+    <>
+      <img
+        src="./logo.png"
+        alt="logo"
+        className="h-28 w-50 absolute top-[-25px]"
+      ></img>
+      <div className="flex justify-center items-center flex-col gap-4 bg-gradient-to-r from-purple-500 to-pink-400 ">
+        <Navigationbar />
 
-          {error.dateofapplication && (
-            <p className="text-red-600 absolute top-[100px]">
-              {error.dateofapplication}
-            </p>
-          )}
-        </div>
-        <div className="flex gap-3 flex-col relative">
-          <span className="font-semibold  text-[25px]"> 💼 Job Title : </span>
-          <input
-            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-            type="text"
-            placeholder="Job title"
-            onChange={handleinputchange}
-            value={formdata.jobtitle}
-            name="jobtitle"
-          ></input>
-          {error.jobtitle && (
-            <p className="text-red-600 absolute top-[100px]">
-              {error.jobtitle}
-            </p>
-          )}
-        </div>
-        <div className="flex gap-3 flex-col relative">
-          <span className="font-semibold  text-[25px]">📊 Job Status : </span>
-          <select
-            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-            type="text"
-            placeholder="status"
-            onChange={handleinputchange}
-            value={formdata.status}
-            name="status"
-          >
-            <option value="">Select the job status</option>
-            <option value="applied"> 📤 Applied</option>
-            <option value="under review">🔍 Under Review</option>
-            <option value="interview scheduled"> 📅 Interview Scheduled</option>
-            <option value="interviewed"> 🎤 Interviewed</option>
-            <option value="offer received"> 📬 Offer Received</option>
-            <option value="accepted offer"> ✅ Accepted Offer</option>
-            <option value="rejected"> ❌ Rejected</option>
-            <option value="withdrawn"> ↩️ Withdrawn</option>
-          </select>
-          {error.status && (
-            <p className="text-red-600 absolute top-[100px]">{error.status}</p>
-          )}
-        </div>
-        <div className="flex gap-3 flex-col relative">
-          <span className="font-semibold  text-[25px]"> 🔄 Type of Job : </span>
-          <select
-            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-            type="text"
-            placeholder="job type"
-            onChange={handleinputchange}
-            value={formdata.jobtype}
-            name="jobtype"
-          >
-            <option value="">Select job type</option>
-            <option value="remote"> 🌐 Remote</option>
-            <option value="onsite"> 🏢 Onsite</option>
-            <option value="hybrid"> 🔄 Hybrid</option>
-          </select>
-          {error.jobtype && (
-            <p className="text-red-600 absolute top-[100px]">{error.jobtype}</p>
-          )}
-        </div>
-        <div className="flex gap-3 flex-col relative">
-          <span className="font-semibold  text-[25px]">
-            📍 Location of the Company :{" "}
-          </span>
-          <input
-            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-            type="text"
-            placeholder="Company location"
-            onChange={handleinputchange}
-            value={formdata.companylocation}
-            name="companylocation"
-          ></input>
-          {error.companylocation && (
-            <p className="text-red-600 absolute top-[100px]">
-              {error.companylocation}
-            </p>
-          )}
-        </div>
-        <div className="flex gap-3 flex-col relative">
-          <span className="font-semibold  text-[25px]">
-            🔗 Source of Application :{" "}
-          </span>
-          <input
-            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-            type="text"
-            placeholder="Application source"
-            onChange={handleinputchange}
-            value={formdata.applicationsource}
-            name="applicationsource"
-          ></input>
-          {error.applicationsource && (
-            <p className="text-red-600 absolute top-[100px]">
-              {error.applicationsource}
-            </p>
-          )}
-        </div>
-        <div className="flex gap-3 flex-col relative">
-          <span className="font-semibold  text-[25px]"> 📄 Your Resume : </span>
-          <input
-            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-            type="file"
-            placeholder="Drop Your Resume"
-            name="resume"
-            onChange={handleinputchange}
-            value={formdata.resume}
-          ></input>
-          {error.resume && (
-            <p className="text-red-600 absolute top-[100px]">{error.resume}</p>
-          )}
-        </div>
-        <div className="flex gap-3 flex-col relative">
-          <span className="font-semibold  text-[25px]">
-            📝 Your Cover Letter :{" "}
-          </span>
-          <input
-            className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-            type="file"
-            placeholder=" Drop Your cover letter"
-            name="coverletter"
-            value={formdata.coverletter}
-            onChange={handleinputchange}
-          ></input>
-          {error.coverletter && (
-            <p className="text-red-600 absolute top-[100px]">
-              {error.coverletter}
-            </p>
-          )}
-        </div>
-        <div className="flex gap-3 flex-col relative">
-          <span className="font-semibold  text-[25px]"> ✍️ Note : </span>
-          <textarea
-            className=" shadow-black shadow-sm w-[500px]  text-[20px]  bg-yellow-100 p-2 rounded-lg
+        <div className=" rounded-[8px] flex  gap-12 flex-col pl-[100px] pr-[10px] pt-[20px] bg-emerald-100 h-fit w-[800px]  shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
+          <h1 className=" font-bold text-purple-800 bg-emerald-300 max-w-fit text-4xl p-[10px] rounded-[5px]  ml-[130px]  absolute  ">
+            Job Application Form
+          </h1>
+          <br></br>
+          <div className="flex gap-3 flex-col relative ">
+            <span className="font-semibold  text-[25px] Inter ">
+              🏢 Company Name :{" "}
+            </span>
+            <input
+              className=" w-[500px] h-[40px] text-[20px] bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm"
+              type="text"
+              placeholder="Name of the company"
+              onChange={handleinputchange}
+              value={formdata.companyname}
+              name="companyname"
+            ></input>
+            {error.companyname && (
+              <p className="text-red-600 absolute top-[100px]">
+                {error.companyname}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-3 flex-col relative">
+            <span className="font-semibold  text-[25px]">
+              📅 Date of Application :{" "}
+            </span>
+            <input
+              className=" bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm w-[500px] h-[40px] text-[20px] "
+              type="date"
+              placeholder="Date of application"
+              onChange={handleinputchange}
+              value={formdata.dateofapplication}
+              name="dateofapplication"
+            ></input>
+
+            {error.dateofapplication && (
+              <p className="text-red-600 absolute top-[100px]">
+                {error.dateofapplication}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-3 flex-col relative">
+            <span className="font-semibold  text-[25px]"> 💼 Job Title : </span>
+            <input
+              className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+              type="text"
+              placeholder="Job title"
+              onChange={handleinputchange}
+              value={formdata.jobtitle}
+              name="jobtitle"
+            ></input>
+            {error.jobtitle && (
+              <p className="text-red-600 absolute top-[100px]">
+                {error.jobtitle}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-3 flex-col relative">
+            <span className="font-semibold  text-[25px]">📊 Job Status : </span>
+            <select
+              className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+              type="text"
+              placeholder="status"
+              onChange={handleinputchange}
+              value={formdata.status}
+              name="status"
+            >
+              <option value="">Select the job status</option>
+              <option value="applied"> 📤 Applied</option>
+              <option value="under review">🔍 Under Review</option>
+              <option value="interview scheduled">
+                {" "}
+                📅 Interview Scheduled
+              </option>
+              <option value="interviewed"> 🎤 Interviewed</option>
+              <option value="offer received"> 📬 Offer Received</option>
+              <option value="accepted offer"> ✅ Accepted Offer</option>
+              <option value="rejected"> ❌ Rejected</option>
+              <option value="withdrawn"> ↩️ Withdrawn</option>
+            </select>
+            {error.status && (
+              <p className="text-red-600 absolute top-[100px]">
+                {error.status}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-3 flex-col relative">
+            <span className="font-semibold  text-[25px]">
+              {" "}
+              🔄 Type of Job :{" "}
+            </span>
+            <select
+              className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+              type="text"
+              placeholder="job type"
+              onChange={handleinputchange}
+              value={formdata.jobtype}
+              name="jobtype"
+            >
+              <option value="">Select job type</option>
+              <option value="remote"> 🌐 Remote</option>
+              <option value="onsite"> 🏢 Onsite</option>
+              <option value="hybrid"> 🔄 Hybrid</option>
+            </select>
+            {error.jobtype && (
+              <p className="text-red-600 absolute top-[100px]">
+                {error.jobtype}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-3 flex-col relative">
+            <span className="font-semibold  text-[25px]">
+              📍 Location of the Company :{" "}
+            </span>
+            <input
+              className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+              type="text"
+              placeholder="Company location"
+              onChange={handleinputchange}
+              value={formdata.companylocation}
+              name="companylocation"
+            ></input>
+            {error.companylocation && (
+              <p className="text-red-600 absolute top-[100px]">
+                {error.companylocation}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-3 flex-col relative">
+            <span className="font-semibold  text-[25px]">
+              🔗 Source of Application :{" "}
+            </span>
+            <input
+              className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+              type="text"
+              placeholder="Application source"
+              onChange={handleinputchange}
+              value={formdata.applicationsource}
+              name="applicationsource"
+            ></input>
+            {error.applicationsource && (
+              <p className="text-red-600 absolute top-[100px]">
+                {error.applicationsource}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-3 flex-col relative">
+            <span className="font-semibold  text-[25px]">
+              {" "}
+              📄 Your Resume :{" "}
+            </span>
+            <input
+              className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+              type="file"
+              placeholder="Drop Your Resume"
+              name="resume"
+              onChange={handleinputchange}
+              value={formdata.resume}
+            ></input>
+            {error.resume && (
+              <p className="text-red-600 absolute top-[100px]">
+                {error.resume}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-3 flex-col relative">
+            <span className="font-semibold  text-[25px]">
+              📝 Your Cover Letter :{" "}
+            </span>
+            <input
+              className=" shadow-black shadow-sm w-[500px] h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+              type="file"
+              placeholder=" Drop Your cover letter"
+              name="coverletter"
+              value={formdata.coverletter}
+              onChange={handleinputchange}
+            ></input>
+            {error.coverletter && (
+              <p className="text-red-600 absolute top-[100px]">
+                {error.coverletter}
+              </p>
+            )}
+          </div>
+          <div className="flex gap-3 flex-col relative">
+            <span className="font-semibold  text-[25px]"> ✍️ Note : </span>
+            <textarea
+              className=" shadow-black shadow-sm w-[500px]  text-[20px]  bg-yellow-100 p-2 rounded-lg
             "
-            type="text"
-            rows={5}
-            placeholder="Leave your notes (Optional)"
-            onChange={handleinputchange}
-            value={formdata.notes}
-            name="notes"
-          ></textarea>
-        </div>
-        <div className="flex gap-10 justify-end">
-          <button
-            onClick={resetdata}
-            className="  transition-all ease-in-out text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
-          >
-            Reset
-          </button>
+              type="text"
+              rows={5}
+              placeholder="Leave your notes (Optional)"
+              onChange={handleinputchange}
+              value={formdata.notes}
+              name="notes"
+            ></textarea>
+          </div>
+          <div className="flex gap-10 justify-end">
+            <button
+              onClick={resetdata}
+              className="  transition-all ease-in-out text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
+            >
+              Reset
+            </button>
 
-          <button
-            onClick={confirmdata}
-            className=" transition-all ease-in-out text-xl text-purple-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-blue-100 hover:text-green-800"
-          >
-            Confirm
-          </button>
+            <button
+              onClick={confirmdata}
+              className=" transition-all ease-in-out text-xl text-purple-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-blue-100 hover:text-green-800"
+            >
+              Confirm
+            </button>
+          </div>
         </div>
-      </div>
-      {/* <div className="fixed bottom-10 ">
+        {/* <div className="fixed bottom-10 ">
         {isconfirmed && (
           <p className=" text-blue-800 w-fit px-8 h-[45px] text-[24px] bg-green-100 font-semibold rounded-2xl  ">
             Data updated sucessfully ✅{" "}
@@ -337,8 +359,9 @@ function Jobform() {
         )}
       </div> */}
 
-      <div className="fixed bottom-10  "></div>
-    </div>
+        <div className="fixed bottom-10  "></div>
+      </div>
+    </>
   );
 }
 export default Jobform;

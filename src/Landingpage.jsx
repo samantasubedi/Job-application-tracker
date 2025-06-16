@@ -11,6 +11,11 @@ function Landingpage() {
     <>
       <div className=" h-screen bg-gradient-to-r from-purple-500 to-red-400 w-full overflow-clip">
         <Navigationbar />
+        <img
+          src="./logo.png"
+          alt="logo"
+          className="h-28 w-50 absolute top-[-25px]"
+        ></img>
         <div className="relative">
           <div className="flex w-full flex-col  absolute left-[100px]">
             <h1 className="text-[50px] text-purple-800  w-[500px] ">

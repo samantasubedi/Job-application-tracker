@@ -10,6 +10,11 @@ function Features() {
     <>
       <div className="bg-gradient-to-r from-purple-500 to-red-400 h-fit pb-8 ">
         <Navigationbar />
+        <img
+          src="./logo.png"
+          alt="logo"
+          className="h-28 w-50 absolute top-[-25px]"
+        ></img>
         <div className="text-bold text-[50px] flex justify-center font-bold">
           Features
         </div>

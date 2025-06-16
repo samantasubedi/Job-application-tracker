@@ -5,6 +5,11 @@ function Testimonials() {
     <>
       <div className="bg-gradient-to-r from-purple-500 to-red-400 h-fit ">
         <Navigationbar />
+        <img
+          src="./logo.png"
+          alt="logo"
+          className="h-28 w-50 absolute top-[-25px]"
+        ></img>
         <br />
         <div className="font-bold text-5xl text-orange-800 text-center">
           Let's see what our clients have to say

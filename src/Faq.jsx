@@ -9,6 +9,11 @@ function Faq() {
     <>
       <div className="h-fit bg-gradient-to-r from-purple-500 to-red-400 pb-10">
         <Navigationbar></Navigationbar>
+        <img
+          src="./logo.png"
+          alt="logo"
+          className="h-28 w-50 absolute top-[-25px]"
+        ></img>
         <div className="flex justify-center items-center flex-col gap-4">
           <div className="italic font-bold text-purple-800 text-4xl">
             Have any questions? Leave it here
