@@ -17,13 +17,17 @@ function Jobform() {
     coverletter: "",
     notes: "",
   });
-  const { index } = useParams();
+  const { index } = useParams(); // it is same as const params=useParams(); const index=params.index;
+  console.log(index);
   const id = Number(index);
 
   useEffect(() => {
+    if (isNaN(id)) {
+      return;
+    }
     const alldata = JSON.parse(localStorage.getItem("jobapplications"));
     if (id >= 0 && id < alldata.length) {
-      const editingdata = alldata[id];
+      const editingdata = alldata[id]; //access the particular object from array of alldata
       console.log(editingdata);
       if (editingdata) {
         setformdata(editingdata);
@@ -49,15 +53,18 @@ function Jobform() {
   // const [isconfirmed, setisconfirmed] = useState(false);
   function confirmdata() {
     if (formvalidation()) {
-      toast.success("Form has been submitted successfully");
       // setisconfirmed(true);
       // setTimeout(() => {
       //   setisconfirmed(false);
       // }, 3000);
       const existingjobs =
         JSON.parse(localStorage.getItem("jobapplications")) || [];
-      const updatedjobs = [...existingjobs, formdata];
-      localStorage.setItem("jobapplications", JSON.stringify(updatedjobs));
+      if (!isNaN(id)) {
+        existingjobs[id] = formdata;
+      } else {
+        existingjobs.push(formdata);
+      }
+      localStorage.setItem("jobapplications", JSON.stringify(existingjobs));
       setformdata({
         companyname: "",
         dateofapplication: "",
@@ -70,6 +77,8 @@ function Jobform() {
         coverletter: "",
         notes: "",
       });
+
+      toast.success("Form has been submitted successfully");
     }
   }
 
@@ -118,9 +127,9 @@ function Jobform() {
       newerror.companylocation = "Company location is required !";
     if (!formdata.applicationsource.trim())
       newerror.applicationsource = "Source for application submission !";
-    if (!formdata.resume) newerror.resume = "Resume is required !";
-    if (!formdata.coverletter)
-      newerror.coverletter = "Cover letter is required !";
+    // if (!formdata.resume) newerror.resume = "Resume is required !";
+    // if (!formdata.coverletter)
+    //   newerror.coverletter = "Cover letter is required !";
     seterror(newerror);
     return Object.keys(newerror).length === 0; //Object.key is a object method it returns the array of key of that particular specified object,
     //  in our case we specified newerror object
@@ -146,7 +155,7 @@ function Jobform() {
           </div>
           <br></br>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 ">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
             <div className="flex gap-3 flex-col relative ">
               <span className="font-semibold  text-[25px] Inter ">
                 🏢 Company Name :{" "}
@@ -216,17 +225,17 @@ function Jobform() {
                 name="status"
               >
                 <option value="">Select the job status</option>
-                <option value="applied"> 📤 Applied</option>
-                <option value="under review">🔍 Under Review</option>
-                <option value="interview scheduled">
+                <option value="Applied"> 📤 Applied</option>
+                <option value="Under review">🔍 Under Review</option>
+                <option value="Interview scheduled">
                   {" "}
-                  📅 Interview Scheduled
+                  📅 Interview Scheduled{" "}
                 </option>
-                <option value="interviewed"> 🎤 Interviewed</option>
-                <option value="offer received"> 📬 Offer Received</option>
-                <option value="accepted offer"> ✅ Accepted Offer</option>
-                <option value="rejected"> ❌ Rejected</option>
-                <option value="withdrawn"> ↩️ Withdrawn</option>
+                <option value="Interviewed"> 🎤 Interviewed</option>
+                <option value="Offer received"> 📬 Offer Received</option>
+                <option value="Accepted offer"> ✅ Accepted Offer</option>
+                <option value="Rejected"> ❌ Rejected</option>
+                <option value="Withdrawn"> ↩️ Withdrawn</option>
               </select>
               {error.status && (
                 <p className="text-red-600 absolute top-[100px]">
@@ -305,7 +314,7 @@ function Jobform() {
                 placeholder="Drop Your Resume"
                 name="resume"
                 onChange={handleinputchange}
-                value={formdata.resume}
+                // value={formdata.resume}
               ></input>
               {error.resume && (
                 <p className="text-red-600 absolute top-[100px]">
@@ -322,7 +331,7 @@ function Jobform() {
                 type="file"
                 placeholder=" Drop Your cover letter"
                 name="coverletter"
-                value={formdata.coverletter}
+                // value={formdata.coverletter}
                 onChange={handleinputchange}
               ></input>
               {error.coverletter && (

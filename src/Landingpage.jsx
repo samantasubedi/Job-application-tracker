@@ -33,9 +33,7 @@ function Landingpage() {
             <p className=" text-purple-900 text-[40px]">
               Start Tracking Now For{" "}
             </p>
-            <p className="font-bold text-yellow-500 text-[40px] animate-pulse">
-              FREE !
-            </p>
+            <p className="font-bold text-yellow-400 text-[40px]  ">FREE !</p>
             <p className="text-pink-900 text-[20px] w-[500px] font-semibold bg-purple-300 p-2 rounded-2xl">
               Keep track of your job applications, deadlines, and progress all
               in one place.
@@ -43,7 +41,7 @@ function Landingpage() {
           </div>
           <Link
             to="./dataentry"
-            className="transition-all z-10 flex gap-2 items-center ease-in-out animate-bounce bg-amber-300 p-[10px] font-bold rounded-[20px] left-[350px] top-[90px] absolute text-[25px] hover:bg-lime-200 hover:text-[28px] hover:cursor-pointer hover:text-blue-600"
+            className="transition-all z-10 flex gap-2 items-center ease-in-out animate-bounce bg-amber-300 p-[10px] font-bold rounded-[20px] left-[350px] top-[90px] absolute text-[25px] hover:bg-lime-200 hover:text-[28px] hover:cursor-pointer hover:text-blue-600 hover:animate-none"
           >
             Get Started
             <Icon icon="noto:rocket" width="40" height="40" />
@@ -54,10 +52,10 @@ function Landingpage() {
         </div>
       </div>
 
-      <footer className="bg-gradient-to-r from-gray-600 to-gray-400 border-t-8 border-red-800 p-2 h-[350px]">
+      <footer className="bg-gradient-to-r from-gray-600 to-gray-400 border-t-8 border-red-800  h-[400px] p-5 relative">
         <div className="flex justify-center ">
           {" "}
-          <h1 className="font-bold text-4xl">Jobtrackr</h1>
+          <img src="./logo.png" alt="logo" className="h-28 w-50"></img>
         </div>
         <div className="flex gap-20">
           <div className="flex flex-col gap-2">
@@ -72,9 +70,9 @@ function Landingpage() {
 
           <div className="flex flex-col gap-2">
             <span className="underline">Home</span>
+            <span className="underline"> My Appications</span>
             <span className="underline">Features</span>
             <span className="underline">Data Entry</span>
-            <span className="underline"> Preview</span>
             <span className="underline">Testimonials</span>
             <span className="underline">FAQ</span>
           </div>
