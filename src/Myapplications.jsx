@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Navigationbar from "./Navigationbar";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import Navigationbar from "./Navigationbar";
 function Myapplications() {
   const [applications, setapplications] = useState([]);
   const [showconfirm, setshowconfirm] = useState(false);
@@ -35,37 +35,85 @@ function Myapplications() {
     setshowconfirm(false);
     toast.error("Application deleted successfully");
   }
-
+  const [status, setstatus] = useState("All");
+  const filteredapps = applications.filter(
+    (app) => status == "All" || status == app.status
+  );
   return (
     <>
       <div className="h-fit pb-10 bg-gradient-to-r from-purple-500 to-red-400 relative min-h-screen">
         <Navigationbar />
         <div className="flex justify-evenly font-semibold bg-gray-300 p-1 m-2 rounded-lg">
-          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+          <button
+            onClick={() => setstatus("All")}
+            className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+              status === "All" ? "bg-gray-400" : ""
+            }`}
+          >
             All
           </button>
-          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+          <button
+            onClick={() => setstatus("Applied")}
+            className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+              status === "Applied" ? "bg-gray-400" : ""
+            }`}
+          >
             Applied
           </button>
-          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+          <button
+            onClick={() => setstatus("Under review")}
+            className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+              status === "Under review" ? "bg-gray-400" : ""
+            }`}
+          >
             Under Review
           </button>
-          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+          <button
+            onClick={() => setstatus("Interview scheduled")}
+            className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+              status === "Interview scheduled" ? "bg-gray-400" : ""
+            }`}
+          >
             Interview Scheduled
           </button>
-          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+          <button
+            onClick={() => setstatus("Interviewed")}
+            className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+              status === "Interviewed" ? "bg-gray-400" : ""
+            }`}
+          >
             Interviewed
           </button>
-          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+          <button
+            onClick={() => setstatus("Offer received")}
+            className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+              status === "Offer received" ? "bg-gray-400" : ""
+            }`}
+          >
             Offer Received
           </button>
-          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+          <button
+            onClick={() => setstatus("Accepted offer")}
+            className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+              status === "Accepted offer" ? "bg-gray-400" : ""
+            }`}
+          >
             Accepted Offer
           </button>
-          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+          <button
+            onClick={() => setstatus("Rejected")}
+            className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+              status === "Rejected" ? "bg-gray-400" : ""
+            }`}
+          >
             Rejected
           </button>
-          <button className="bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer">
+          <button
+            onClick={() => setstatus("Withdrawn")}
+            className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+              status === "Withdrawn" ? "bg-gray-400" : ""
+            }`}
+          >
             Withdrawn
           </button>
         </div>
@@ -74,15 +122,13 @@ function Myapplications() {
           alt="logo"
           className="h-28 w-50 absolute top-[-25px]"
         ></img>
-        {applications.length == 0 && (
+        {filteredapps.length == 0 && (
           <div className="flex flex-col gap-10 items-center">
             <div className="flex gap-2 bg-white w-fit p-5 rounded-sm">
               {" "}
               <Icon
-                icon="memory:alert-circle"
-                width="40"
-                height="40"
-                color="red"
+                icon="mdi:error"
+                className="text-5xl bg-white text-red-700 rounded-full"
               />
               <div className="text-4xl font-bold text-red-700">
                 {" "}
@@ -94,54 +140,61 @@ function Myapplications() {
             </div>
           </div>
         )}
+
         {applications && (
           <div className="p-4 w-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[40px] ">
-            {applications.map((currentobject, index) => (
-              /* here we are mapping the array of objects where each object have their own index*/
-              <div
-                key={index}
-                className="relative flex flex-col gap-5 text-center pt-[30px] bg-purple-100 border-green-800 border-2 p-3 rounded-3xl transition-all duration-500 hover:bg-purple-200"
-              >
-                {" "}
-                <div className="  bg-amber-200 font-semibold italic w-fit p-2 rounded-2xl">
-                  {currentobject.status}
-                </div>
-                <div className="font-bold text-4xl text-red-700">
-                  {currentobject.companyname} , {currentobject.companylocation}
-                </div>
-                <div className="font-semibold text-2xl text-yellow-700 bg-orange-100 p-3 rounded-2xl">
-                  {currentobject.jobtitle}
-                </div>
-                <div className="bg-cyan-200 flex flex-col gap-3 py-5 rounded-2xl">
-                  <div className="text-xl text-blue-700 font-semibold">
-                    Applied On : {currentobject.dateofapplication}
+            {applications
+              .filter(
+                (currentapp) => status === "All" || currentapp.status == status
+              )
+              .map((currentobject, index) => (
+                /* here we are mapping the array of objects where each object have their own index*/
+
+                <div
+                  key={index}
+                  className="relative flex flex-col gap-5 text-center pt-[30px] bg-purple-100 border-green-800 border-2 p-3 rounded-3xl transition-all duration-500 hover:bg-purple-200"
+                >
+                  {" "}
+                  <div className="  bg-amber-200 font-semibold italic w-fit p-2 rounded-2xl">
+                    {currentobject.status}
                   </div>
-                  <div className="text-blue-700 text-xl font-semibold">
-                    Work Location : {currentobject.jobtype}
+                  <div className="font-bold text-4xl text-red-700">
+                    {currentobject.companyname} ,{" "}
+                    {currentobject.companylocation}
                   </div>
-                  <div className="text-blue-700 text-xl font-semibold">
-                    Applied via : {currentobject.applicationsource}
+                  <div className="font-semibold text-2xl text-yellow-700 bg-orange-100 p-3 rounded-2xl">
+                    {currentobject.jobtitle}
+                  </div>
+                  <div className="bg-cyan-200 flex flex-col gap-3 py-5 rounded-2xl">
+                    <div className="text-xl text-blue-700 font-semibold">
+                      Applied On : {currentobject.dateofapplication}
+                    </div>
+                    <div className="text-blue-700 text-xl font-semibold">
+                      Work Location : {currentobject.jobtype}
+                    </div>
+                    <div className="text-blue-700 text-xl font-semibold">
+                      Applied via : {currentobject.applicationsource}
+                    </div>
+                  </div>
+                  <div className="text-green-600 font-semibold italic bg-emerald-100 rounded-2xl text-xl">
+                    {currentobject.notes}
+                  </div>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => editapplication(index)}
+                      className="text-xl font-semibold bg-white text-amber-700 transition-all duration-300 hover:bg-yellow-400 hover:text-black hover:cursor-pointer p-2.5 rounded-2xl"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => deleteclicked(index)}
+                      className="text-xl font-semibold bg-white text-red-600 transition-all duration-300 hover:bg-red-400 hover:text-black hover:cursor-pointer p-2.5 rounded-2xl "
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
-                <div className="text-green-600 font-semibold italic bg-emerald-100 rounded-2xl text-xl">
-                  {currentobject.notes}
-                </div>
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => editapplication(index)}
-                    className="text-xl font-semibold bg-white text-amber-700 transition-all duration-300 hover:bg-yellow-400 hover:text-black hover:cursor-pointer p-2.5 rounded-2xl"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => deleteclicked(index)}
-                    className="text-xl font-semibold bg-white text-red-600 transition-all duration-300 hover:bg-red-400 hover:text-black hover:cursor-pointer p-2.5 rounded-2xl "
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
         {showconfirm && (

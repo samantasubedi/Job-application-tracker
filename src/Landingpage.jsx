@@ -1,11 +1,11 @@
 import { FaFacebook } from "react-icons/fa6";
 import { TiSocialLinkedinCircular } from "react-icons/ti";
 
+import { Icon } from "@iconify/react/dist/iconify.js";
 import { BsTwitterX } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
-import Navigationbar from "./Navigationbar";
 import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import Navigationbar from "./Navigationbar";
 
 function Landingpage() {
   return (
@@ -48,7 +48,10 @@ function Landingpage() {
           </Link>
         </div>
         <div className="relative">
-          <div className="absolute h-[500px] w-[600px] bg-white left-[800px] top-[100px]"></div>
+          <div className="absolute h-[500px] w-[600px] bg-white left-[800px] top-[100px]">
+            {" "}
+            preview vedio
+          </div>
         </div>
       </div>
 
