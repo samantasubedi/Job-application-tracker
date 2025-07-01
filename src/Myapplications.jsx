@@ -7,6 +7,10 @@ function Myapplications() {
   const [applications, setapplications] = useState([]);
   const [showconfirm, setshowconfirm] = useState(false);
   const [indextodelete, setindextodelete] = useState(null);
+  const [isopen, setisopen] = useState(false);
+  function toggleMenu() {
+    setisopen(!isopen);
+  }
   function deleteclicked(index) {
     console.log("delete clicked", index);
     setindextodelete(index);
@@ -39,11 +43,134 @@ function Myapplications() {
   const filteredapps = applications.filter(
     (app) => status == "All" || status == app.status
   );
+
   return (
     <>
       <div className="h-fit pb-10 bg-gradient-to-r from-purple-500 to-red-400 relative min-h-screen">
-        <Navigationbar />
-        <div className="flex justify-evenly font-semibold bg-gray-300 p-1 m-2 rounded-lg">
+        <div className="flex gap-10">
+          <img
+            src="./logo.png"
+            alt="logo"
+            className="md:h-28 md:w-50  h-10 w-18"
+          ></img>
+          <Navigationbar />
+        </div>
+        <div className="lg:hidden  top-5 left-5">
+          <button
+            onClick={toggleMenu}
+            className="flex bg-gray-300 rounded-3xl p-2 cursor-pointer"
+          >
+            <span className="text-black text-2xl font-bold">Filter</span>
+            <Icon icon="stash:filter-duotone" className="text-4xl" />
+          </button>
+
+          <div
+            className={`z-10 lg-hidden flex flex-col gap-2 fixed top-24 left-5 h-fit w-1/2 bg-amber-200 p-2 rounded-3xl ${
+              isopen ? "block" : "hidden"
+            } transition-transform duration-300  `}
+          >
+            <button
+              onClick={() => {
+                setstatus("All");
+                setisopen(false);
+              }}
+              className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+                status === "All" ? "bg-gray-400" : ""
+              }`}
+            >
+              All
+            </button>
+            <button
+              onClick={() => {
+                setstatus("Applied");
+                setisopen(false);
+              }}
+              className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+                status === "Applied" ? "bg-gray-400" : ""
+              }`}
+            >
+              Applied
+            </button>
+            <button
+              onClick={() => {
+                setstatus("Under review");
+                setisopen(false);
+              }}
+              className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+                status === "Under review" ? "bg-gray-400" : ""
+              }`}
+            >
+              Under Review
+            </button>
+            <button
+              onClick={() => {
+                setstatus("Interview scheduled");
+                setisopen(false);
+              }}
+              className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+                status === "Interview scheduled" ? "bg-gray-400" : ""
+              }`}
+            >
+              Interview Scheduled
+            </button>
+            <button
+              onClick={() => {
+                setstatus("Interviewed");
+                setisopen(false);
+              }}
+              className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+                status === "Interviewed" ? "bg-gray-400" : ""
+              }`}
+            >
+              Interviewed
+            </button>
+            <button
+              onClick={() => {
+                setstatus("Offer received");
+                setisopen(false);
+              }}
+              className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+                status === "Offer received" ? "bg-gray-400" : ""
+              }`}
+            >
+              Offer Received
+            </button>
+            <button
+              onClick={() => {
+                setstatus("Accepted offer");
+                setisopen(false);
+              }}
+              className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+                status === "Accepted offer" ? "bg-gray-400" : ""
+              }`}
+            >
+              Accepted Offer
+            </button>
+            <button
+              onClick={() => {
+                setstatus("Rejected");
+                setisopen(false);
+              }}
+              className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+                status === "Rejected" ? "bg-gray-400" : ""
+              }`}
+            >
+              Rejected
+            </button>
+            <button
+              onClick={() => {
+                setstatus("Withdrawn");
+                setisopen(false);
+              }}
+              className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
+                status === "Withdrawn" ? "bg-gray-400" : ""
+              }`}
+            >
+              Withdrawn
+            </button>
+          </div>
+        </div>
+        <div className="hidden md:flex justify-evenly font-semibold bg-gray-300 p-1 m-2 rounded-lg">
           <button
             onClick={() => setstatus("All")}
             className={`bg-gray-200 p-3 rounded-2xl hover:bg-gray-400 hover:cursor-pointer ${
@@ -117,25 +244,21 @@ function Myapplications() {
             Withdrawn
           </button>
         </div>
-        <img
-          src="./logo.png"
-          alt="logo"
-          className="h-28 w-50 absolute top-[-25px]"
-        ></img>
+
         {filteredapps.length == 0 && (
-          <div className="flex flex-col gap-10 items-center">
+          <div className="flex flex-col gap-10 items-center mt-10 md:mt-0">
             <div className="flex gap-2 bg-white w-fit p-5 rounded-sm">
               {" "}
               <Icon
                 icon="mdi:error"
-                className="text-5xl bg-white text-red-700 rounded-full"
+                className="text-3xl md:text-5xl bg-white text-red-700 rounded-full"
               />
-              <div className="text-4xl font-bold text-red-700">
+              <div className="md:text-4xl text-xl font-bold text-red-700">
                 {" "}
                 No Applications Found !
               </div>
             </div>
-            <div className="text-3xl font-semimbold italic">
+            <div className="md:text-3xl text-xl font-semimbold italic">
               Your Applications Appear Here{" "}
             </div>
           </div>

@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navigationbar from "./Navigationbar";
-import { useParams } from "react-router-dom";
 
 function Jobform() {
   const [error, seterror] = useState({});
@@ -139,239 +139,241 @@ function Jobform() {
   }
   return (
     <>
-      <img
-        src="./logo.png"
-        alt="logo"
-        className="h-28 w-50 absolute top-[-25px]"
-      ></img>
-      <div className="flex justify-center items-center flex-col gap-4 bg-gradient-to-r from-purple-500 to-pink-400 ">
-        <Navigationbar />
-
-        <div className=" rounded-[8px] flex  gap-12 flex-col p-5 md:p-20 bg-emerald-100 h-fit   shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
-          <div className="flex justify-center">
-            <h1 className=" font-bold text-purple-800 bg-emerald-300 max-w-fit text-4xl p-[10px] rounded-[5px]    absolute  ">
-              Job Application Form
-            </h1>
-          </div>
-          <br></br>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
-            <div className="flex gap-3 flex-col relative ">
-              <span className="font-semibold  text-[25px] Inter ">
-                🏢 Company Name :{" "}
-              </span>
-              <input
-                className="  h-[40px] text-[20px] bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm"
-                type="text"
-                placeholder="Name of the company"
-                onChange={handleinputchange}
-                value={formdata.companyname}
-                name="companyname"
-              ></input>
-              {error.companyname && (
-                <p className="text-red-600 absolute top-[100px]">
-                  {error.companyname}
-                </p>
-              )}
-            </div>
-            <div className="flex gap-3 flex-col relative">
-              <span className="font-semibold  text-[25px]">
-                📅 Date of Application :{" "}
-              </span>
-              <input
-                className=" bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm  h-[40px] text-[20px] "
-                type="date"
-                placeholder="Date of application"
-                onChange={handleinputchange}
-                value={formdata.dateofapplication}
-                name="dateofapplication"
-              ></input>
-
-              {error.dateofapplication && (
-                <p className="text-red-600 absolute top-[100px]">
-                  {error.dateofapplication}
-                </p>
-              )}
-            </div>
-            <div className="flex gap-3 flex-col relative">
-              <span className="font-semibold  text-[25px]">
-                {" "}
-                💼 Job Title :{" "}
-              </span>
-              <input
-                className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-                type="text"
-                placeholder="Job title"
-                onChange={handleinputchange}
-                value={formdata.jobtitle}
-                name="jobtitle"
-              ></input>
-              {error.jobtitle && (
-                <p className="text-red-600 absolute top-[100px]">
-                  {error.jobtitle}
-                </p>
-              )}
-            </div>
-            <div className="flex gap-3 flex-col relative">
-              <span className="font-semibold  text-[25px]">
-                📊 Job Status :{" "}
-              </span>
-              <select
-                className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-                type="text"
-                placeholder="status"
-                onChange={handleinputchange}
-                value={formdata.status}
-                name="status"
-              >
-                <option value="">Select the job status</option>
-                <option value="Applied"> 📤 Applied</option>
-                <option value="Under review">🔍 Under Review</option>
-                <option value="Interview scheduled">
-                  {" "}
-                  📅 Interview Scheduled{" "}
-                </option>
-                <option value="Interviewed"> 🎤 Interviewed</option>
-                <option value="Offer received"> 📬 Offer Received</option>
-                <option value="Accepted offer"> ✅ Accepted Offer</option>
-                <option value="Rejected"> ❌ Rejected</option>
-                <option value="Withdrawn"> ↩️ Withdrawn</option>
-              </select>
-              {error.status && (
-                <p className="text-red-600 absolute top-[100px]">
-                  {error.status}
-                </p>
-              )}
-            </div>
-            <div className="flex gap-3 flex-col relative">
-              <span className="font-semibold  text-[25px]">
-                {" "}
-                🔄 Type of Job :{" "}
-              </span>
-              <select
-                className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-                type="text"
-                placeholder="job type"
-                onChange={handleinputchange}
-                value={formdata.jobtype}
-                name="jobtype"
-              >
-                <option value="">Select job type</option>
-                <option value="remote"> 🌐 Remote</option>
-                <option value="onsite"> 🏢 Onsite</option>
-                <option value="hybrid"> 🔄 Hybrid</option>
-              </select>
-              {error.jobtype && (
-                <p className="text-red-600 absolute top-[100px]">
-                  {error.jobtype}
-                </p>
-              )}
-            </div>
-            <div className="flex gap-3 flex-col relative">
-              <span className="font-semibold  text-[25px]">
-                📍 Location of the Company :{" "}
-              </span>
-              <input
-                className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-                type="text"
-                placeholder="Company location"
-                onChange={handleinputchange}
-                value={formdata.companylocation}
-                name="companylocation"
-              ></input>
-              {error.companylocation && (
-                <p className="text-red-600 absolute top-[100px]">
-                  {error.companylocation}
-                </p>
-              )}
-            </div>
-            <div className="flex gap-3 flex-col relative">
-              <span className="font-semibold  text-[25px]">
-                🔗 Source of Application :{" "}
-              </span>
-              <input
-                className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-                type="text"
-                placeholder="Application source"
-                onChange={handleinputchange}
-                value={formdata.applicationsource}
-                name="applicationsource"
-              ></input>
-              {error.applicationsource && (
-                <p className="text-red-600 absolute top-[100px]">
-                  {error.applicationsource}
-                </p>
-              )}
-            </div>
-            <div className="flex gap-3 flex-col relative">
-              <span className="font-semibold  text-[25px]">
-                {" "}
-                📄 Your Resume :{" "}
-              </span>
-              <input
-                className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-                type="file"
-                placeholder="Drop Your Resume"
-                name="resume"
-                onChange={handleinputchange}
-                // value={formdata.resume}
-              ></input>
-              {error.resume && (
-                <p className="text-red-600 absolute top-[100px]">
-                  {error.resume}
-                </p>
-              )}
-            </div>
-            <div className="flex gap-3 flex-col relative  lg:col-span-2">
-              <span className="font-semibold  text-[25px]">
-                📝 Your Cover Letter :{" "}
-              </span>
-              <input
-                className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
-                type="file"
-                placeholder=" Drop Your cover letter"
-                name="coverletter"
-                // value={formdata.coverletter}
-                onChange={handleinputchange}
-              ></input>
-              {error.coverletter && (
-                <p className="text-red-600 absolute top-[100px]">
-                  {error.coverletter}
-                </p>
-              )}
-            </div>
-          </div>
-
-          <div className="flex gap-3 flex-col relative lg:col-span-2">
-            <span className="font-semibold  text-[25px]"> ✍️ Note : </span>
-            <textarea
-              className=" shadow-black shadow-sm  text-[20px]  bg-yellow-100 p-2 rounded-lg
-            "
-              type="text"
-              rows={5}
-              placeholder="Leave your notes (Optional)"
-              onChange={handleinputchange}
-              value={formdata.notes}
-              name="notes"
-            ></textarea>
-          </div>
-          <div className="flex gap-10 justify-end">
-            <button
-              onClick={resetdata}
-              className="  transition-all ease-in-out text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
-            >
-              Reset
-            </button>
-
-            <button
-              onClick={confirmdata}
-              className=" transition-all ease-in-out text-xl text-purple-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-blue-100 hover:text-green-800"
-            >
-              Confirm
-            </button>
-          </div>
+      <div className="h-fit pb-10 bg-gradient-to-r from-purple-500 to-red-400 relative min-h-screen">
+        <div className="flex gap-10">
+          <img
+            src="./logo.png"
+            alt="logo"
+            className="md:h-28 md:w-50  h-10 w-18"
+          ></img>
+          <Navigationbar />
         </div>
-        {/* <div className="fixed bottom-10 ">
+        <div className="flex justify-center items-center flex-col gap-4 ">
+          <div className=" rounded-[8px] flex  gap-12 flex-col p-5 md:p-20 bg-emerald-100 h-fit   shadow-black shadow-md mb-[20px] mt-[20px] pb-[25px]">
+            <div className="flex justify-center">
+              <h1 className=" font-bold text-purple-800 bg-emerald-300 max-w-fit text-2xl md:text-4xl p-[10px] rounded-[5px]    absolute  ">
+                Job Application Form
+              </h1>
+            </div>
+            <br></br>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
+              <div className="flex gap-3 flex-col relative ">
+                <span className="font-semibold  text-[25px] Inter ">
+                  🏢 Company Name :{" "}
+                </span>
+                <input
+                  className="  h-[40px] text-[20px] bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm"
+                  type="text"
+                  placeholder="Name of the company"
+                  onChange={handleinputchange}
+                  value={formdata.companyname}
+                  name="companyname"
+                ></input>
+                {error.companyname && (
+                  <p className="text-red-600 absolute top-[100px]">
+                    {error.companyname}
+                  </p>
+                )}
+              </div>
+              <div className="flex gap-3 flex-col relative">
+                <span className="font-semibold  text-[25px]">
+                  📅 Date of Application :{" "}
+                </span>
+                <input
+                  className=" bg-yellow-100 p-2 rounded-lg shadow-black shadow-sm  h-[40px] text-[20px] "
+                  type="date"
+                  placeholder="Date of application"
+                  onChange={handleinputchange}
+                  value={formdata.dateofapplication}
+                  name="dateofapplication"
+                ></input>
+
+                {error.dateofapplication && (
+                  <p className="text-red-600 absolute top-[100px]">
+                    {error.dateofapplication}
+                  </p>
+                )}
+              </div>
+              <div className="flex gap-3 flex-col relative">
+                <span className="font-semibold  text-[25px]">
+                  {" "}
+                  💼 Job Title :{" "}
+                </span>
+                <input
+                  className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+                  type="text"
+                  placeholder="Job title"
+                  onChange={handleinputchange}
+                  value={formdata.jobtitle}
+                  name="jobtitle"
+                ></input>
+                {error.jobtitle && (
+                  <p className="text-red-600 absolute top-[100px]">
+                    {error.jobtitle}
+                  </p>
+                )}
+              </div>
+              <div className="flex gap-3 flex-col relative">
+                <span className="font-semibold  text-[25px]">
+                  📊 Job Status :{" "}
+                </span>
+                <select
+                  className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+                  type="text"
+                  placeholder="status"
+                  onChange={handleinputchange}
+                  value={formdata.status}
+                  name="status"
+                >
+                  <option value="">Select the job status</option>
+                  <option value="Applied"> 📤 Applied</option>
+                  <option value="Under review">🔍 Under Review</option>
+                  <option value="Interview scheduled">
+                    {" "}
+                    📅 Interview Scheduled{" "}
+                  </option>
+                  <option value="Interviewed"> 🎤 Interviewed</option>
+                  <option value="Offer received"> 📬 Offer Received</option>
+                  <option value="Accepted offer"> ✅ Accepted Offer</option>
+                  <option value="Rejected"> ❌ Rejected</option>
+                  <option value="Withdrawn"> ↩️ Withdrawn</option>
+                </select>
+                {error.status && (
+                  <p className="text-red-600 absolute top-[100px]">
+                    {error.status}
+                  </p>
+                )}
+              </div>
+              <div className="flex gap-3 flex-col relative">
+                <span className="font-semibold  text-[25px]">
+                  {" "}
+                  🔄 Type of Job :{" "}
+                </span>
+                <select
+                  className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+                  type="text"
+                  placeholder="job type"
+                  onChange={handleinputchange}
+                  value={formdata.jobtype}
+                  name="jobtype"
+                >
+                  <option value="">Select job type</option>
+                  <option value="remote"> 🌐 Remote</option>
+                  <option value="onsite"> 🏢 Onsite</option>
+                  <option value="hybrid"> 🔄 Hybrid</option>
+                </select>
+                {error.jobtype && (
+                  <p className="text-red-600 absolute top-[100px]">
+                    {error.jobtype}
+                  </p>
+                )}
+              </div>
+              <div className="flex gap-3 flex-col relative">
+                <span className="font-semibold  text-[25px]">
+                  📍 Location of the Company :{" "}
+                </span>
+                <input
+                  className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+                  type="text"
+                  placeholder="Company location"
+                  onChange={handleinputchange}
+                  value={formdata.companylocation}
+                  name="companylocation"
+                ></input>
+                {error.companylocation && (
+                  <p className="text-red-600 absolute top-[100px]">
+                    {error.companylocation}
+                  </p>
+                )}
+              </div>
+              <div className="flex gap-3 flex-col relative">
+                <span className="font-semibold  text-[25px]">
+                  🔗 Source of Application :{" "}
+                </span>
+                <input
+                  className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+                  type="text"
+                  placeholder="Application source"
+                  onChange={handleinputchange}
+                  value={formdata.applicationsource}
+                  name="applicationsource"
+                ></input>
+                {error.applicationsource && (
+                  <p className="text-red-600 absolute top-[100px]">
+                    {error.applicationsource}
+                  </p>
+                )}
+              </div>
+              <div className="flex gap-3 flex-col relative">
+                <span className="font-semibold  text-[25px]">
+                  {" "}
+                  📄 Your Resume :{" "}
+                </span>
+                <input
+                  className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+                  type="file"
+                  placeholder="Drop Your Resume"
+                  name="resume"
+                  onChange={handleinputchange}
+                  // value={formdata.resume}
+                ></input>
+                {error.resume && (
+                  <p className="text-red-600 absolute top-[100px]">
+                    {error.resume}
+                  </p>
+                )}
+              </div>
+              <div className="flex gap-3 flex-col relative  lg:col-span-2">
+                <span className="font-semibold  text-[25px]">
+                  📝 Your Cover Letter :{" "}
+                </span>
+                <input
+                  className=" shadow-black shadow-sm  h-[40px] text-[20px]  bg-yellow-100 p-2 rounded-lg"
+                  type="file"
+                  placeholder=" Drop Your cover letter"
+                  name="coverletter"
+                  // value={formdata.coverletter}
+                  onChange={handleinputchange}
+                ></input>
+                {error.coverletter && (
+                  <p className="text-red-600 absolute top-[100px]">
+                    {error.coverletter}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="flex gap-3 flex-col relative lg:col-span-2">
+              <span className="font-semibold  text-[25px]"> ✍️ Note : </span>
+              <textarea
+                className=" shadow-black shadow-sm  text-[20px]  bg-yellow-100 p-2 rounded-lg
+            "
+                type="text"
+                rows={5}
+                placeholder="Leave your notes (Optional)"
+                onChange={handleinputchange}
+                value={formdata.notes}
+                name="notes"
+              ></textarea>
+            </div>
+            <div className="flex gap-10 justify-end">
+              <button
+                onClick={resetdata}
+                className="  transition-all ease-in-out text-xl text-red-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-red-100 hover:text-green-red-500"
+              >
+                Reset
+              </button>
+
+              <button
+                onClick={confirmdata}
+                className=" transition-all ease-in-out text-xl text-purple-700 font-bold rounded-2xl p-[5px] w-fit bg-white  shadow-md shadow-slate-300 hover:translate-y-1 cursor-pointer hover:bg-blue-100 hover:text-green-800"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+          {/* <div className="fixed bottom-10 ">
         {isconfirmed && (
           <p className=" text-blue-800 w-fit px-8 h-[45px] text-[24px] bg-green-100 font-semibold rounded-2xl  ">
             Data updated sucessfully ✅{" "}
@@ -379,7 +381,8 @@ function Jobform() {
         )}
       </div> */}
 
-        <div className="fixed bottom-10  "></div>
+          <div className="fixed bottom-10  "></div>
+        </div>
       </div>
     </>
   );

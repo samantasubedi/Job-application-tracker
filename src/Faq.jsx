@@ -1,26 +1,28 @@
-import Navigationbar from "./Navigationbar";
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { BsFillPatchQuestionFill } from "react-icons/bs";
 import { SiAnswer } from "react-icons/si";
+import { toast } from "react-toastify";
+import Navigationbar from "./Navigationbar";
 function Faq() {
   const [inputvalue, setinputvalue] = useState("");
   return (
     <>
       <div className="h-fit bg-gradient-to-r from-purple-500 to-red-400 pb-10">
-        <Navigationbar></Navigationbar>
-        <img
-          src="./logo.png"
-          alt="logo"
-          className="h-28 w-50 absolute top-[-25px]"
-        ></img>
-        <div className="flex justify-center items-center flex-col gap-4">
-          <div className="italic font-bold text-purple-800 text-4xl">
+        <div className="flex gap-10">
+          <img
+            src="./logo.png"
+            alt="logo"
+            className="md:h-28 md:w-50  h-10 w-18"
+          ></img>
+          <Navigationbar />
+        </div>
+        <div className="flex justify-center items-center flex-col gap-4 md:mt-0 mt-5">
+          <div className="italic font-bold text-purple-800 md:text-4xl text-2xl">
             Have any questions? Leave it here
           </div>
           <div className="flex gap-2 ">
             <input
-              className="rounded-3xl w-[600px] bg-white p-3"
+              className="rounded-3xl md:w-[600px] w-[100%] bg-white p-3"
               type="text"
               placeholder="Ask your query"
               value={inputvalue}
@@ -42,13 +44,12 @@ function Faq() {
           </div>
         </div>
         <br></br>
-        <div>
-          <p className="font-bold text-blue-800 text-3xl m-2 bg-gradient-to-r from-purple-300 to-red-200 py-1 text-center rounded-2xl">
+        <div className="md:px-5 px-2 ">
+          <p className="font-bold text-blue-800 md:text-3xl text-xl m-2 bg-gradient-to-r from-purple-300 to-red-200 py-1 text-center rounded-2xl">
             Here are some of the frequently asked question about our website
           </p>
-          <div className="h-[2px] bg-red-900"></div>
 
-          <div className="bg-blue-100">
+          <div className="bg-blue-100 rounded-3xl p-2">
             <p className="font-bold text-yellow-600 text-3xl bg-yellow-100 w-fit ml-3  rounded-2xl p-2">
               🛠️ General Usage
             </p>
@@ -104,7 +105,7 @@ function Faq() {
             </div>
           </div>
           <br></br>
-          <div className="bg-blue-100">
+          <div className="bg-blue-100 rounded-3xl p-2">
             <p className="font-bold text-green-800 text-3xl bg-green-100 w-fit ml-3  rounded-2xl p-2">
               💾 Data & Storage
             </p>
@@ -163,7 +164,7 @@ function Faq() {
           </div>
 
           <br></br>
-          <div className="bg-blue-100">
+          <div className="bg-blue-100 rounded-3xl p-2">
             <p className="font-bold text-blue-800 text-3xl bg-blue-200 w-fit ml-3  rounded-2xl p-2">
               💡Features & Functionality
             </p>
@@ -220,7 +221,7 @@ function Faq() {
             </div>
           </div>
           <br></br>
-          <div className="bg-blue-100">
+          <div className="bg-blue-100 rounded-3xl p-2">
             <p className="font-bold text-red-800 text-3xl bg-red-200 w-fit ml-3  rounded-2xl p-2">
               🔒 Privacy
             </p>
@@ -258,7 +259,7 @@ function Faq() {
             </div>
           </div>
           <br></br>
-          <div className="bg-blue-100">
+          <div className="bg-blue-100 rounded-3xl p-2">
             <p className="font-bold text-orange-800 text-3xl bg-orange-200 w-fit ml-3  rounded-2xl p-2">
               💭 Suggestions & Contributions
             </p>
