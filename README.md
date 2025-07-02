@@ -37,5 +37,40 @@ A fully responsive Job Application Tracker built using **React** and **Tailwind 
   Built using **Tailwind CSS**, the UI is intuitive, consistent, and visually appealing.
 
 ---
+---
+
+## 🛠 Tech Stack
+
+- **React** – Frontend framework
+- **Tailwind CSS** – Utility-first CSS for styling
+- **LocalStorage** – For persistent client-side data
+- **Framer Motion** – For smooth animations
+- **React Router** – For navigation between pages
+- **React Icons** – For consistent and scalable icons
+
+---
+
+
+
+---
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js and npm installed
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/samantasubedi/job-application-tracker.git
+cd job-application-tracker
+
+# Install dependencies
+npm install
+
+# Run the application
+npm run dev
 
 
