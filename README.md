@@ -11,7 +11,7 @@ A fully responsive Job Application Tracker built using **React** and **Tailwind 
   - Company Name
   - Job Title
   - Location
-  - Job Type (Full-time, Part-time, Internship, etc.)
+  - Job Type (onsite,remote,hybrid)
   - Job Status (Applied, Interviewing, Offered, Rejected, Withdrawn)
   - Application Date
   - Source (LinkedIn, Website, Referral, etc.)
