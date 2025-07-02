@@ -1,12 +1,41 @@
-# React + Vite
+# 🧾 Job Application Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully responsive Job Application Tracker built using **React** and **Tailwind CSS**, designed to help users seamlessly manage their job hunt process. This application allows users to add, edit, delete, and filter job applications. It stores all data in the browser using **localStorage**, ensuring persistence without needing a backend.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+### ✅ Core Features
+- **Add New Job Applications** with fields like:
+  - Company Name
+  - Job Title
+  - Location
+  - Job Type (Full-time, Part-time, Internship, etc.)
+  - Job Status (Applied, Interviewing, Offered, Rejected, Withdrawn)
+  - Application Date
+  - Source (LinkedIn, Website, Referral, etc.)
+  - Notes
+  - Upload Resume and Cover Letter
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Edit Existing Applications**  
+  Update any previously submitted job application using the edit functionality.
+
+- **Delete Applications with Confirmation**  
+  Prevents accidental deletion through a confirmation dialog.
+
+- **Filter Applications by Job Status**  
+  Easily narrow down the list of applications by selecting a specific job status like "Interviewing" or "Rejected".
+
+- **Mobile Responsiveness**  
+  The entire application is fully responsive and works smoothly on all screen sizes from mobile to desktop.
+
+- **Persistent Local Storage**  
+  All application data is saved in the browser, so it remains available even after refreshing or closing the tab.
+
+- **Clean and Minimal UI**  
+  Built using **Tailwind CSS**, the UI is intuitive, consistent, and visually appealing.
+
+---
+
+
