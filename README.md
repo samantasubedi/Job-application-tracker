@@ -11,7 +11,7 @@ A fully responsive Job Application Tracker built using **React** and **Tailwind 
   - Company Name
   - Job Title
   - Location
-  - Job Type (onsite,remote,hybrid)
+  - Job Type (Onsite, Remote, Hybrid)
   - Job Status (Applied, Interviewing, Offered, Rejected, Withdrawn)
   - Application Date
   - Source (LinkedIn, Website, Referral, etc.)
@@ -37,7 +37,6 @@ A fully responsive Job Application Tracker built using **React** and **Tailwind 
   Built using **Tailwind CSS**, the UI is intuitive, consistent, and visually appealing.
 
 ---
----
 
 ## 🛠 Tech Stack
 
@@ -50,6 +49,9 @@ A fully responsive Job Application Tracker built using **React** and **Tailwind 
 
 ---
 
+## 🌍 Live Demo
+
+> 🔗 [View Live App](https://job-application-tracker-ashen.vercel.app/)  
 
 
 ---
@@ -72,5 +74,3 @@ npm install
 
 # Run the application
 npm run dev
-
-
