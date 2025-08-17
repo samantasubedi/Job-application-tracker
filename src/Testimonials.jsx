@@ -15,7 +15,7 @@ function Testimonials() {
         </div>
 
         <div className="text-center font-bold text-2xl md:text-5xl text-orange-800 px-4">
-          Let's see what our clients have to say
+          Let's see what our users have to say
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 p-4 md:p-8">
