@@ -27,7 +27,7 @@ function Navigationbar() {
         </button>
       </div>
       <div
-        className={`fixed top-20 right-0 h-fit  sm:w-1/2 bg-transparent bg-gradient-to-r from-purple-400 to-red-400  flex flex-col items-center justify-center space-y-6 transform ${
+        className={`fixed top-20 right-0 h-fit  sm:w-1/2 bg-transparent  flex flex-col items-center justify-center space-y-6 transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out lg:hidden`}
       >
